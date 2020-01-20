@@ -1,0 +1,69 @@
+version: '3.3'services:
+  mysql:
+    image: mysql:5.7
+    restart: always    
+    environment:
+    MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:    
+      - '3306:3306'    
+    volumes:
+      - my-db:/var/lib/mysql     
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    ports:
+      - "22:22"
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /srv/gitlab/data:/var/opt/gitlab
+      - /srv/gitlab/logs:/var/log/gitlab
+      - /srv/gitlab/config:/etc/gitlab
+    environment:
+      GITLAB_OMNIBUS_CONFIG: "from_file('/omnibus_config.rb')"
+    configs:
+      - source: gitlab
+        target: /omnibus_config.rb
+    secrets:
+      - gitlab_root_password
+  gitlab-runner:
+    image: gitlab/gitlab-runner:alpine
+    deploy:
+      mode: replicated
+      replicas: 4
+  
+  nginx:
+    container_name: angular_nginx
+    build: .docker/nginx
+    volumes:
+      - ${ANGULAR_APP}/dist/RecetteCuisine:/usr/share/nginx/html
+    ports:
+      - "81:80"
+      - "443:443"
+    
+  node:
+      build: .docker/node
+      container_name: angular_node
+      ports:
+          - 4200:4200
+      volumes:
+          - ${ANGULAR_APP}:/home/node/app/frontend
+      tty: true
+      command:
+          - /bin/sh
+          - -c
+          - |
+              cd /home/node/app/frontend && npm start
+      expose:
+          - "4200"
+configs:
+  gitlab:
+    file: ./gitlab.rb
+secrets:
+  gitlab_root_password:
+    file: ./root_password.txt
+# Names our volume
+volumes:
+  my-db:
