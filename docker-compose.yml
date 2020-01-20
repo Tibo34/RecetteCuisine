@@ -1,39 +1,33 @@
-version: '3.3'services:
+version: '3.3'
+
+services:
   mysql:
     image: mysql:5.7
     restart: always    
     environment:
-    MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-            MYSQL_DATABASE: ${MYSQL_DATABASE}
-            MYSQL_USER: ${MYSQL_USER}
-            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:    
-      - '3306:3306'    
+      - '9906:3306'    
     volumes:
-      - my-db:/var/lib/mysql     
+      - /var/lib/mysql     
   gitlab:
-    image: gitlab/gitlab-ce:latest
-    ports:
-      - "22:22"
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /srv/gitlab/data:/var/opt/gitlab
-      - /srv/gitlab/logs:/var/log/gitlab
-      - /srv/gitlab/config:/etc/gitlab
+    image: 'gitlab/gitlab-ce:latest'
+    restart: always
+    hostname: 'gitlab.example.com'
     environment:
-      GITLAB_OMNIBUS_CONFIG: "from_file('/omnibus_config.rb')"
-    configs:
-      - source: gitlab
-        target: /omnibus_config.rb
-    secrets:
-      - gitlab_root_password
-  gitlab-runner:
-    image: gitlab/gitlab-runner:alpine
-    deploy:
-      mode: replicated
-      replicas: 4
-  
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://gitlab.example.com:8929'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2224
+    ports:
+      - '8929:8929'
+      - '2224:22'
+    volumes:
+      - '/srv/gitlab/config:/etc/gitlab'
+      - '/srv/gitlab/logs:/var/log/gitlab'
+      - '/srv/gitlab/data:/var/opt/gitlab'
   nginx:
     container_name: angular_nginx
     build: .docker/nginx
@@ -58,12 +52,10 @@ version: '3.3'services:
               cd /home/node/app/frontend && npm start
       expose:
           - "4200"
-configs:
-  gitlab:
-    file: ./gitlab.rb
-secrets:
-  gitlab_root_password:
-    file: ./root_password.txt
-# Names our volume
-volumes:
-  my-db:
+  tomcat:
+    image: tomcat:8.5.35
+    container_name: tomcat
+    volumes:
+      - ./docker/myapp.war:/usr/local/tomcat/webapps/myapp.war
+    ports:
+      - "8080:8080"
