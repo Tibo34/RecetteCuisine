@@ -1,4 +1,4 @@
-package com.example.RecetteCuisine.RecetteCuisine.Repository;
+package com.ConfigPoste.RecetteCuisine.RecetteCuisine.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,7 +13,7 @@ public class repositoryDAO {
 
     private repositoryDAO() {
         try {
-            EntityManagerFactory enf = Persistence.createEntityManagerFactory("com.edensia.profil.contact.persistence");
+            EntityManagerFactory enf = Persistence.createEntityManagerFactory("com.ConfigPoste.RecetteCuisine.RecetteCuisine.persistence");
             em = enf.createEntityManager();
             if(em.isOpen()) {
 
