@@ -4,8 +4,17 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="connection.url"/>
-    <property name="connection.driver_class"/>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="connection.url">jdbc:mysql://localhost:9906/recetteCuisine</property>
+    <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+    <property name="show_sql">true</property>
+    <property name="connection.username">molinat</property>
+    <property name="connection.password">1234</property>
+    <mapping class="com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Ingredient"/>
+    <mapping class="com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.IngredientRecette"/>
+    <mapping class="com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Recette"/>
+    <mapping class="com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.TypeIngredient"/>
+    <mapping class="com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Unite"/>
     <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 
