@@ -3,10 +3,7 @@ package com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller;
 import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Recette;
 import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Repository.RecetteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,6 +31,12 @@ public class RecetteController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET,produces = "application/json")
     public Recette afficherRecette(@PathVariable int id) {
         Recette recette=recetteRepository.getById(1);
+        return recette;
+    }
+
+    @RequestMapping(value = "/create",method = RequestMethod.GET.POST,produces = "application/json")
+    public Recette saveRecette(@RequestBody Recette recette){
+        recette=recetteRepository.save(recette);
         return recette;
     }
 }
