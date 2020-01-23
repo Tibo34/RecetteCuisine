@@ -7,7 +7,7 @@ import java.util.Collection;
 public class Unite {
     private int id;
     private String value;
-    private Collection<TypeIngredient> typeIngredientsById;
+
 
     @Id
     @Column(name = "id", nullable = false)
@@ -49,12 +49,5 @@ public class Unite {
         return result;
     }
 
-    @OneToMany(mappedBy = "uniteByUniteId")
-    public Collection<TypeIngredient> getTypeIngredientsById() {
-        return typeIngredientsById;
-    }
 
-    public void setTypeIngredientsById(Collection<TypeIngredient> typeIngredientsById) {
-        this.typeIngredientsById = typeIngredientsById;
-    }
 }

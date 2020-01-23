@@ -11,14 +11,12 @@
     <property name="connection.username">molinat</property>
     <property name="connection.password">1234</property>
     <mapping class="com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Ingredient"/>
-    <mapping class="com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.IngredientRecette"/>
+
     <mapping class="com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Recette"/>
     <mapping class="com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.TypeIngredient"/>
     <mapping class="com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Unite"/>
-    <!-- <property name="connection.username"/> -->
-    <!-- <property name="connection.password"/> -->
 
-    <!-- DB schema will be updated if needed -->
-    <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+
+
   </session-factory>
 </hibernate-configuration>

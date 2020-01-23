@@ -1,15 +1,15 @@
 package com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 public class Ingredient {
     private int id;
-    private String nom;
     private Integer typeId;
+    private Double quantite;
+    private Integer recetteId;
     private TypeIngredient typeIngredientByTypeId;
-    private Collection<IngredientRecette> ingredientRecettesById;
+
 
     @Id
     @Column(name = "id", nullable = false)
@@ -22,23 +22,33 @@ public class Ingredient {
     }
 
     @Basic
-    @Column(name = "nom", nullable = true, length = 50)
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    @Basic
-    @Column(name = "type_id", nullable = true,insertable=false,updatable = false)
+    @Column(name = "type_id", nullable = true,updatable = false,insertable = false)
     public Integer getTypeId() {
         return typeId;
     }
 
     public void setTypeId(Integer typeId) {
         this.typeId = typeId;
+    }
+
+    @Basic
+    @Column(name = "quantite", nullable = true, precision = 0)
+    public Double getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(Double quantite) {
+        this.quantite = quantite;
+    }
+
+    @Basic
+    @Column(name = "recette_id", nullable = true,updatable = false,insertable = false)
+    public Integer getRecetteId() {
+        return recetteId;
+    }
+
+    public void setRecetteId(Integer recetteId) {
+        this.recetteId = recetteId;
     }
 
     @Override
@@ -49,8 +59,9 @@ public class Ingredient {
         Ingredient that = (Ingredient) o;
 
         if (id != that.id) return false;
-        if (nom != null ? !nom.equals(that.nom) : that.nom != null) return false;
         if (typeId != null ? !typeId.equals(that.typeId) : that.typeId != null) return false;
+        if (quantite != null ? !quantite.equals(that.quantite) : that.quantite != null) return false;
+        if (recetteId != null ? !recetteId.equals(that.recetteId) : that.recetteId != null) return false;
 
         return true;
     }
@@ -58,8 +69,9 @@ public class Ingredient {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (nom != null ? nom.hashCode() : 0);
         result = 31 * result + (typeId != null ? typeId.hashCode() : 0);
+        result = 31 * result + (quantite != null ? quantite.hashCode() : 0);
+        result = 31 * result + (recetteId != null ? recetteId.hashCode() : 0);
         return result;
     }
 
@@ -73,12 +85,5 @@ public class Ingredient {
         this.typeIngredientByTypeId = typeIngredientByTypeId;
     }
 
-    @OneToMany(mappedBy = "ingredientByIngredientId")
-    public Collection<IngredientRecette> getIngredientRecettesById() {
-        return ingredientRecettesById;
-    }
 
-    public void setIngredientRecettesById(Collection<IngredientRecette> ingredientRecettesById) {
-        this.ingredientRecettesById = ingredientRecettesById;
-    }
 }

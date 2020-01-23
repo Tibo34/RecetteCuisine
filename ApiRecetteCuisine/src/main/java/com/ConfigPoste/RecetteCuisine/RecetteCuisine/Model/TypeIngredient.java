@@ -8,7 +8,7 @@ public class TypeIngredient {
     private int id;
     private String nom;
     private Integer uniteId;
-    private Collection<Ingredient> ingredientsById;
+
     private Unite uniteByUniteId;
 
     @Id
@@ -32,7 +32,7 @@ public class TypeIngredient {
     }
 
     @Basic
-    @Column(name = "unite_id", nullable = true,insertable=false,updatable = false)
+    @Column(name = "unite_id", nullable = true,updatable = false,insertable = false)
     public Integer getUniteId() {
         return uniteId;
     }
@@ -63,14 +63,7 @@ public class TypeIngredient {
         return result;
     }
 
-    @OneToMany(mappedBy = "typeIngredientByTypeId")
-    public Collection<Ingredient> getIngredientsById() {
-        return ingredientsById;
-    }
 
-    public void setIngredientsById(Collection<Ingredient> ingredientsById) {
-        this.ingredientsById = ingredientsById;
-    }
 
     @ManyToOne
     @JoinColumn(name = "unite_id", referencedColumnName = "id")

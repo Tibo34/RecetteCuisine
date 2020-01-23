@@ -7,7 +7,7 @@ import java.util.Collection;
 public class Recette {
     private int id;
     private String nom;
-    private Collection<IngredientRecette> ingredientRecettesById;
+    private Collection<Ingredient> ingredients;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -49,12 +49,13 @@ public class Recette {
         return result;
     }
 
-    @OneToMany(mappedBy = "recetteByRecetteId")
-    public Collection<IngredientRecette> getIngredientRecettesById() {
-        return ingredientRecettesById;
+    @OneToMany
+    @JoinColumn(name = "recette_id", insertable = false, updatable = false)
+    public Collection<Ingredient> getIngredients() {
+        return ingredients;
     }
 
-    public void setIngredientRecettesById(Collection<IngredientRecette> ingredientRecettesById) {
-        this.ingredientRecettesById = ingredientRecettesById;
+    public void setIngredients(Collection<Ingredient> ingredientsById) {
+        this.ingredients = ingredientsById;
     }
 }
