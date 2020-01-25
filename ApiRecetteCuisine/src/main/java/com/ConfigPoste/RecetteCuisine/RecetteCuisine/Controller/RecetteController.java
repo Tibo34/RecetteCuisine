@@ -19,22 +19,22 @@ public class RecetteController {
         this.recetteRepository = new RecetteRepository();
     }
 
-
-
+    @CrossOrigin(origins = "*")
     @RequestMapping(value="", method= RequestMethod.GET,produces = "application/json")
     public List<Recette> getList(){
         List<Recette> recettes=recetteRepository.getAll();
         return recettes;
     }
 
-
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET,produces = "application/json")
     public Recette afficherRecette(@PathVariable int id) {
         Recette recette=recetteRepository.getById(1);
         return recette;
     }
 
-    @RequestMapping(value = "/create",method = RequestMethod.GET.POST,produces = "application/json")
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/create",method = RequestMethod.POST,produces = "application/json")
     public Recette saveRecette(@RequestBody Recette recette){
         recette=recetteRepository.save(recette);
         return recette;

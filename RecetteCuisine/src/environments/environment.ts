@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urldatabase:'http:localhost:9906/'
+  urldatabase:'http://localhost:9090/'
 };
 
 /*

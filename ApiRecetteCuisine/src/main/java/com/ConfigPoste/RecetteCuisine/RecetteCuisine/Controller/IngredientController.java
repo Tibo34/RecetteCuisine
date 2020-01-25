@@ -19,18 +19,21 @@ public class IngredientController {
         this.ingredientRepository = new IngredientRepository();
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value="", method= RequestMethod.GET,produces = "application/json")
     public List<Ingredient> getList(){
         List<Ingredient> ingredients=new IngredientRepository().getAll();
         return ingredients;
     }
 
-
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET,produces = "application/json")
     public Ingredient afficherIngredient(@PathVariable int id) {
         Ingredient ingredient=new IngredientRepository().getById(1);
         return ingredient;
     }
+
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/create",method = RequestMethod.POST,produces = "application/json")
     public Ingredient createIngredient(@RequestBody Ingredient newIngredient){
         return ingredientRepository.save(newIngredient);

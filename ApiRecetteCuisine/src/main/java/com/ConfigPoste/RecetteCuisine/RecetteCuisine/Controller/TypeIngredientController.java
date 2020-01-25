@@ -20,18 +20,21 @@ public class TypeIngredientController {
         this.TypeIngredientRepository = new TypeIngredientRepository();
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value="", method= RequestMethod.GET,produces = "application/json")
     public List<TypeIngredient> getList(){
         List<TypeIngredient> ingredients=TypeIngredientRepository.getAll();
         return ingredients;
     }
 
-
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET,produces = "application/json")
     public TypeIngredient afficherIngredient(@PathVariable int id) {
         TypeIngredient ingredient=TypeIngredientRepository.getById(1);
         return ingredient;
     }
+
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/create",method = RequestMethod.POST,produces = "application/json")
     public TypeIngredient createIngredient(@RequestBody TypeIngredient newIngredient){
         return TypeIngredientRepository.save(newIngredient);

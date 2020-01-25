@@ -73,6 +73,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/RecetteCuisineApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Repository/DAORepository.java">
           <value>
             <set />
@@ -108,6 +113,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/WebSecurityConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/resources/Recette.hbm.xml">
           <value>
             <set />
@@ -129,6 +139,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/resources/ressources.orm.xml.fxml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/target/application.yml">
           <value>
             <set />
           </value>

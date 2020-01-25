@@ -10,13 +10,10 @@
     <property name="show_sql">true</property>
     <property name="connection.username">molinat</property>
     <property name="connection.password">1234</property>
-    <mapping class="com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Ingredient"/>
 
+    <mapping class="com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Ingredient"/>
     <mapping class="com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Recette"/>
     <mapping class="com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.TypeIngredient"/>
     <mapping class="com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Unite"/>
-
-
-
   </session-factory>
 </hibernate-configuration>
