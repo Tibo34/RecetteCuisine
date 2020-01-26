@@ -2,35 +2,44 @@ package com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller;
 
 import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Recette;
 import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Repository.RecetteRepository;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/Recettes")
 public class RecetteController {
-
-
+    @Autowired
     private final RecetteRepository recetteRepository;
 
-    @Autowired
-    RecetteController() {
-        this.recetteRepository = new RecetteRepository();
+    private Logger logger = Logger.getLogger(RecetteController.class);
+
+    public RecetteController(RecetteRepository recetteRepository) {
+        this.recetteRepository = recetteRepository;
     }
+
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value="", method= RequestMethod.GET,produces = "application/json")
-    public List<Recette> getList(){
-        List<Recette> recettes=recetteRepository.getAll();
+    public Collection<Recette> getList(){
+        logger.debug("Get all recettes!");
+        Iterable<Recette> recettesIterable=  recetteRepository.findAll();
+        Collection<Recette> recettes=new ArrayList<>((Collection<? extends Recette>) recettesIterable);
+        logger.debug(recettes);
         return recettes;
     }
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET,produces = "application/json")
     public Recette afficherRecette(@PathVariable int id) {
-        Recette recette=recetteRepository.getById(1);
-        return recette;
+        logger.debug("recette : "+id);
+        Optional<Recette> recette=recetteRepository.findById(id);
+        logger.debug(recette);
+        return recette.get();
     }
 
     @CrossOrigin(origins = "*")

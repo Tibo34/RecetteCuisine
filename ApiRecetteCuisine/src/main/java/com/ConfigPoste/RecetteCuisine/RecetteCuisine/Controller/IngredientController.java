@@ -2,35 +2,38 @@ package com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller;
 
 import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Ingredient;
 import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Repository.IngredientRepository;
-import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Repository.RecetteRepository;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/Ingredients")
 public class IngredientController {
 
-    private final IngredientRepository ingredientRepository;
-
     @Autowired
-    IngredientController() {
-        this.ingredientRepository = new IngredientRepository();
+    private final IngredientRepository ingredientRepository;
+    private Logger logger = Logger.getLogger(IngredientController.class);
+
+    public IngredientController(IngredientRepository ingredientRepository) {
+        this.ingredientRepository = ingredientRepository;
     }
+
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value="", method= RequestMethod.GET,produces = "application/json")
     public List<Ingredient> getList(){
-        List<Ingredient> ingredients=new IngredientRepository().getAll();
+        List<Ingredient> ingredients= (List<Ingredient>) ingredientRepository.findAll();
         return ingredients;
     }
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET,produces = "application/json")
     public Ingredient afficherIngredient(@PathVariable int id) {
-        Ingredient ingredient=new IngredientRepository().getById(1);
-        return ingredient;
+        Optional<Ingredient> ingredient=ingredientRepository.findById(id);
+        return ingredient.get();
     }
 
     @CrossOrigin(origins = "*")

@@ -4,12 +4,16 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@Table(name = "Recette")
 public class Recette {
+
+
     private int id;
     private String nom;
     private Collection<Ingredient> ingredients;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

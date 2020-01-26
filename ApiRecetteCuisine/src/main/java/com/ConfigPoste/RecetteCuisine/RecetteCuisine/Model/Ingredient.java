@@ -3,6 +3,7 @@ package com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Ingredient")
 public class Ingredient {
     private int id;
     private Integer typeId;
@@ -12,6 +13,7 @@ public class Ingredient {
 
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

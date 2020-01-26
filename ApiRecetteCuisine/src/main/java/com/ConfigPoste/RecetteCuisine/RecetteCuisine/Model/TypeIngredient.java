@@ -1,9 +1,9 @@
 package com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
+@Table(name = "TypeIngredient")
 public class TypeIngredient {
     private int id;
     private String nom;
@@ -12,6 +12,7 @@ public class TypeIngredient {
     private Unite uniteByUniteId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

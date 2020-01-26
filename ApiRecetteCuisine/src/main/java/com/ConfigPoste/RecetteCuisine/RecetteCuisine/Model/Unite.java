@@ -4,12 +4,14 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@Table(name = "Unite")
 public class Unite {
     private int id;
     private String value;
 
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

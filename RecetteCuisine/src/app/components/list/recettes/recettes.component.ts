@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { Recette } from 'src/app/Model/Entity/recette';
 import { RecetteService } from 'src/app/services/recette.service';
 import { SortEvent, SortTableDirective } from 'src/app/Model/Directives/sort-table.directive';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-recettes',
@@ -10,33 +11,23 @@ import { SortEvent, SortTableDirective } from 'src/app/Model/Directives/sort-tab
 })
 export class RecettesComponent implements OnInit {
 
-  private listrecettes: Recette[] = [];
-  load = false;
+  recettes$:Observable<Recette[]>;
+  total$: Observable<number>;
+
   @ViewChildren(SortTableDirective) headers: QueryList<SortTableDirective>;
-  sortDirection: string;
-  sortColumn: string;
-  page = 1;
-  pageSize = 4;
-  collectionSize: number;
 
 
-  constructor(private recettesSerice: RecetteService) { }
+
+  constructor(public recettesService: RecetteService) { }
 
   ngOnInit() {
-    this.recettesSerice.getAll().subscribe((rep) => {
-      this.listrecettes = rep;
-      this.load = true;
-      this.collectionSize = this.listrecettes.length;
-    });
+    this.recettes$=this.recettesService.recettes$;
+    this.total$ = this.recettesService.total$;
   }
 
-  get recettes(): Recette[] {
-    return this.listrecettes
-      .map((recette, i) => ({ id: i + 1, ...recette }))
-      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
-  }
 
   onSort({ column, direction }: SortEvent) {
+
     // resetting other headers
     this.headers.forEach(header => {
       if (header.sortable !== column) {
@@ -44,8 +35,10 @@ export class RecettesComponent implements OnInit {
       }
     });
 
-    this.sortColumn = column;
-    this.sortDirection = direction;
+    this.recettesService.sortColumn = column;
+    this.recettesService.sortDirection = direction;
+
+
   }
 
-}
+  }
