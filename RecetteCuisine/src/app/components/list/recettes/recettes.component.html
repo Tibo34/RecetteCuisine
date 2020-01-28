@@ -6,13 +6,13 @@
       <i class="far fa-plus-square"></i></button>
   </div>
   <h1>Liste des recettes</h1>
-  <table class="table table-striped">
+  <table class="table table-striped table-bordered table-hover">
     <thead>
     <th scope="col">#</th>
     <th scope="col" sortable="nom" (sort)="onSort($event)">Nom</th>
     </thead>
     <tbody>
-    <tr *ngFor="let recette of recettes$ | async">
+    <tr *ngFor="let recette of recettes$ | async" (click)="recetteDetail(recette.id)">
       <td scope="row">{{recette.id}}</td>
       <td>
         <ngb-highlight [result]="recette.nom" [term]="recettesService.searchTerm"></ngb-highlight>

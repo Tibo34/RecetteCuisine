@@ -1,9 +1,9 @@
-import {Component, OnInit, ViewChildren, QueryList} from '@angular/core';
-import {Recette} from 'src/app/Model/Entity/recette';
-import {RecetteService} from 'src/app/services/recette.service';
-import {SortEvent, SortTableDirective} from 'src/app/Model/Directives/sort-table.directive';
-import {Observable} from 'rxjs';
-import {Router} from '@angular/router';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { Recette } from 'src/app/Model/Entity/recette';
+import { RecetteService } from 'src/app/services/recette.service';
+import { SortEvent, SortTableDirective } from 'src/app/Model/Directives/sort-table.directive';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recettes',
@@ -26,8 +26,12 @@ export class RecettesComponent implements OnInit {
     this.total$ = this.recettesService.total$;
   }
 
+  recetteDetail(id: number) {
+    this.router.navigate(['recette/' + id]);
+  }
 
-  onSort({column, direction}: SortEvent) {
+
+  onSort({ column, direction }: SortEvent) {
 
     // resetting other headers
     this.headers.forEach(header => {

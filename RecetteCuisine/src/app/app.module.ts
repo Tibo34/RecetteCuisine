@@ -14,6 +14,8 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {RecettesComponent} from './components/list/recettes/recettes.component';
 import {SortTableDirective} from './Model/Directives/sort-table.directive';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { RecetteComponent } from './components/Detail/recette/recette.component';
+import { RecettePreviewComponent } from './components/Preview/recette-preview/recette-preview.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     FromUniteComponent,
     FormTypeIngredientComponent,
     RecettesComponent,
-    SortTableDirective
+    SortTableDirective,
+    RecetteComponent,
+    RecettePreviewComponent
   ],
   imports: [
     BrowserModule,
