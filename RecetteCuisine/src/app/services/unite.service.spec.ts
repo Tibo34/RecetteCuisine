@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { UniteService } from './unite.service';
+import {UniteService} from './unite.service';
 
 describe('UniteService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

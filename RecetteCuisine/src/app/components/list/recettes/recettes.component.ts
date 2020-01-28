@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
-import { Recette } from 'src/app/Model/Entity/recette';
-import { RecetteService } from 'src/app/services/recette.service';
-import { SortEvent, SortTableDirective } from 'src/app/Model/Directives/sort-table.directive';
-import { Observable } from 'rxjs';
+import {Component, OnInit, ViewChildren, QueryList} from '@angular/core';
+import {Recette} from 'src/app/Model/Entity/recette';
+import {RecetteService} from 'src/app/services/recette.service';
+import {SortEvent, SortTableDirective} from 'src/app/Model/Directives/sort-table.directive';
+import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-recettes',
@@ -11,22 +12,22 @@ import { Observable } from 'rxjs';
 })
 export class RecettesComponent implements OnInit {
 
-  recettes$:Observable<Recette[]>;
+  recettes$: Observable<Recette[]>;
   total$: Observable<number>;
 
   @ViewChildren(SortTableDirective) headers: QueryList<SortTableDirective>;
 
 
-
-  constructor(public recettesService: RecetteService) { }
+  constructor(public recettesService: RecetteService, private router: Router) {
+  }
 
   ngOnInit() {
-    this.recettes$=this.recettesService.recettes$;
+    this.recettes$ = this.recettesService.recettes$;
     this.total$ = this.recettesService.total$;
   }
 
 
-  onSort({ column, direction }: SortEvent) {
+  onSort({column, direction}: SortEvent) {
 
     // resetting other headers
     this.headers.forEach(header => {
@@ -37,8 +38,10 @@ export class RecettesComponent implements OnInit {
 
     this.recettesService.sortColumn = column;
     this.recettesService.sortDirection = direction;
-
-
   }
 
+  newRecette() {
+    this.router.navigate(['recettes/newRecette']);
   }
+
+}

@@ -1,4 +1,4 @@
-import { Unite } from './unite';
+import {Unite} from './unite';
 
 describe('Unite', () => {
   it('should create an instance', () => {

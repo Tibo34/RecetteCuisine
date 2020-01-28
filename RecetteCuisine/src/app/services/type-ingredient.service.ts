@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Ingredient } from '../Model/Entity/ingredient';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { TypeIngredient } from '../Model/Entity/type-ingredient';
+import {Injectable} from '@angular/core';
+import {Ingredient} from '../Model/Entity/ingredient';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {environment} from 'src/environments/environment';
+import {TypeIngredient} from '../Model/Entity/type-ingredient';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,7 @@ export class TypeIngredientService {
   getAll(): Observable<TypeIngredient[]> {
     return this.http.get<TypeIngredient[]>(this.url);
   }
+
   getById(id: number) {
     return this.http.get<TypeIngredient>(this.url + '/' + id);
   }

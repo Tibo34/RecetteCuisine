@@ -13,7 +13,7 @@ public class Ingredient {
 
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
@@ -24,7 +24,7 @@ public class Ingredient {
     }
 
     @Basic
-    @Column(name = "type_id", nullable = true,updatable = false,insertable = false)
+    @Column(name = "type_id", nullable = true, updatable = false, insertable = false)
     public Integer getTypeId() {
         return typeId;
     }
@@ -44,7 +44,7 @@ public class Ingredient {
     }
 
     @Basic
-    @Column(name = "recette_id", nullable = true,updatable = false,insertable = false)
+    @Column(name = "recette_id", nullable = true, updatable = false, insertable = false)
     public Integer getRecetteId() {
         return recetteId;
     }

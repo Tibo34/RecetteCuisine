@@ -24,28 +24,29 @@ public class RecetteController {
 
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value="", method= RequestMethod.GET,produces = "application/json")
-    public Collection<Recette> getList(){
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
+    public Collection<Recette> getList() {
         logger.debug("Get all recettes!");
-        Iterable<Recette> recettesIterable=  recetteRepository.findAll();
-        Collection<Recette> recettes=new ArrayList<>((Collection<? extends Recette>) recettesIterable);
+        Iterable<Recette> recettesIterable = recetteRepository.findAll();
+        Collection<Recette> recettes = new ArrayList<>((Collection<? extends Recette>) recettesIterable);
         logger.debug(recettes);
         return recettes;
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET,produces = "application/json")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
     public Recette afficherRecette(@PathVariable int id) {
-        logger.debug("recette : "+id);
-        Optional<Recette> recette=recetteRepository.findById(id);
+        logger.debug("recette : " + id);
+        Optional<Recette> recette = recetteRepository.findById(id);
         logger.debug(recette);
         return recette.get();
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/create",method = RequestMethod.POST,produces = "application/json")
-    public Recette saveRecette(@RequestBody Recette recette){
-        recette=recetteRepository.save(recette);
+    @RequestMapping(value = "/create", method = RequestMethod.POST, produces = "application/json")
+    public Recette saveRecette(@RequestBody Recette recette) {
+        logger.debug(recette);
+        recette = recetteRepository.save(recette);
         return recette;
     }
 }

@@ -23,22 +23,22 @@ public class IngredientController {
 
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value="", method= RequestMethod.GET,produces = "application/json")
-    public List<Ingredient> getList(){
-        List<Ingredient> ingredients= (List<Ingredient>) ingredientRepository.findAll();
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
+    public List<Ingredient> getList() {
+        List<Ingredient> ingredients = (List<Ingredient>) ingredientRepository.findAll();
         return ingredients;
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET,produces = "application/json")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
     public Ingredient afficherIngredient(@PathVariable int id) {
-        Optional<Ingredient> ingredient=ingredientRepository.findById(id);
+        Optional<Ingredient> ingredient = ingredientRepository.findById(id);
         return ingredient.get();
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/create",method = RequestMethod.POST,produces = "application/json")
-    public Ingredient createIngredient(@RequestBody Ingredient newIngredient){
+    @RequestMapping(value = "/create", method = RequestMethod.POST, produces = "application/json")
+    public Ingredient createIngredient(@RequestBody Ingredient newIngredient) {
         return ingredientRepository.save(newIngredient);
     }
 }

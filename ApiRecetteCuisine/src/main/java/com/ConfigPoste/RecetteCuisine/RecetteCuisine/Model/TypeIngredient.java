@@ -12,7 +12,7 @@ public class TypeIngredient {
     private Unite uniteByUniteId;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
@@ -33,7 +33,7 @@ public class TypeIngredient {
     }
 
     @Basic
-    @Column(name = "unite_id", nullable = true,updatable = false,insertable = false)
+    @Column(name = "unite_id", nullable = true, updatable = false, insertable = false)
     public Integer getUniteId() {
         return uniteId;
     }
@@ -63,7 +63,6 @@ public class TypeIngredient {
         result = 31 * result + (uniteId != null ? uniteId.hashCode() : 0);
         return result;
     }
-
 
 
     @ManyToOne

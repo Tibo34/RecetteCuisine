@@ -23,23 +23,23 @@ public class UniteController {
 
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value="", method= RequestMethod.GET,produces = "application/json")
-    public List<Unite> getList(){
-        List<Unite> unites= (List<Unite>) uniteRepository.findAll();
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
+    public List<Unite> getList() {
+        List<Unite> unites = (List<Unite>) uniteRepository.findAll();
         return unites;
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET,produces = "application/json")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
     public Unite afficherUnite(@PathVariable int id) {
-        Optional<Unite> unite= uniteRepository.findById(id);
+        Optional<Unite> unite = uniteRepository.findById(id);
         return unite.get();
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/create",method = RequestMethod.POST,produces = "application/json")
-    public Unite saveUnite(@RequestBody Unite unite){
-        unite=uniteRepository.save(unite);
+    @RequestMapping(value = "/create", method = RequestMethod.POST, produces = "application/json")
+    public Unite saveUnite(@RequestBody Unite unite) {
+        unite = uniteRepository.save(unite);
         return unite;
     }
 

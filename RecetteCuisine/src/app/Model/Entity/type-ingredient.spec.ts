@@ -1,4 +1,4 @@
-import { TypeIngredient } from './type-ingredient';
+import {TypeIngredient} from './type-ingredient';
 
 describe('TypeIngredient', () => {
   it('should create an instance', () => {

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FormIngredientComponent } from './form-ingredient.component';
+import {FormIngredientComponent} from './form-ingredient.component';
 
 describe('FormIngredientComponent', () => {
   let component: FormIngredientComponent;
@@ -8,9 +8,9 @@ describe('FormIngredientComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormIngredientComponent ]
+      declarations: [FormIngredientComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

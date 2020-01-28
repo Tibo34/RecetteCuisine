@@ -1,22 +1,28 @@
 <div>
-  <div>
+  <div class="form-group form-inline">
+    Recherche: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="recettesService.searchTerm"/>
     <span class="ml-3" *ngIf="recettesService.loading$ | async">Loading...</span>
+    <button class="btn btn-outline-primary m-3" (click)="newRecette()" placement="top" ngbTooltip="Ajouter une recette">
+      <i class="far fa-plus-square"></i></button>
   </div>
   <h1>Liste des recettes</h1>
   <table class="table table-striped">
     <thead>
-      <th scope="col">#</th>
-      <th scope="col" sortable="nom" (sort)="onSort($event)">Nom</th>
+    <th scope="col">#</th>
+    <th scope="col" sortable="nom" (sort)="onSort($event)">Nom</th>
     </thead>
     <tbody>
-      <tr *ngFor="let recette of recettes$ | async">
-        <td>{{recette.id}}</td>
-        <td>{{recette.nom}}</td>
-      </tr>
+    <tr *ngFor="let recette of recettes$ | async">
+      <td scope="row">{{recette.id}}</td>
+      <td>
+        <ngb-highlight [result]="recette.nom" [term]="recettesService.searchTerm"></ngb-highlight>
+      </td>
+    </tr>
     </tbody>
   </table>
   <div class="d-flex justify-content-between p-2">
-    <ngb-pagination [collectionSize]="total$ | async" [(page)]="recettesService.page" [pageSize]="recettesService.pageSize">
+    <ngb-pagination [collectionSize]="total$ | async" [(page)]="recettesService.page"
+                    [pageSize]="recettesService.pageSize">
     </ngb-pagination>
 
     <select class="custom-select" style="width: auto" [(ngModel)]="recettesService.pageSize">
@@ -25,4 +31,7 @@
       <option [ngValue]="6">6 items per page</option>
     </select>
   </div>
+
+  <router-outlet></router-outlet>
+
 </div>
