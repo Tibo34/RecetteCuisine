@@ -48,4 +48,8 @@ export class RecettesComponent implements OnInit {
     this.router.navigate(['recettes/new']);
   }
 
+  update() {
+    this.router.navigate(['recettes/update']);
+  }
+
 }

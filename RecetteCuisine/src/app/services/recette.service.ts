@@ -89,6 +89,10 @@ export class RecetteService {
     return this.http.post(this.url + '/create', recette);
   }
 
+  update(recette: Recette) {
+    return this.http.post(this.url + '/update', recette);
+  }
+
   get recettes$() {
     return this._recettes$.asObservable();
   }

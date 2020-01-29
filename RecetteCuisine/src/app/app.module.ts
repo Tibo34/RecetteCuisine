@@ -19,6 +19,7 @@ import { RecettePreviewComponent } from './components/Preview/recette-preview/re
 import { IngredientsComponent } from './components/list/ingredients/ingredients.component';
 import { UnitesComponent } from './components/list/unites/unites.component';
 import { TypeingredientComponent } from './components/Detail/typeingredient/typeingredient.component';
+import { IngredientComponent } from './components/Detail/ingredient/ingredient.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { TypeingredientComponent } from './components/Detail/typeingredient/type
     RecettePreviewComponent,
     IngredientsComponent,
     UnitesComponent,
-    TypeingredientComponent
+    TypeingredientComponent,
+    IngredientComponent
   ],
   imports: [
     BrowserModule,

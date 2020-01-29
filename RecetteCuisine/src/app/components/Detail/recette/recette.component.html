@@ -1,7 +1,56 @@
 <div>
   <ng-container *ngIf="load; else elseTemplate">
-    <h1>{{recette.nom}}</h1>
+    <h1> <span>{{recette.nom}}</span>  <button class="btn btn-outline-primary" (click)="edit=!edit"><i class="far fa-edit"></i></button>
+    </h1>
+    <ng-container *ngIf="edit; else elseTemplate">
+      <div>
+        {{recette.shortContent}}
+      </div>
+      <div>
+        <h2>Détail :</h2>
+       <p> {{recette.content}}</p>
+      </div>
+
+    </ng-container>
+    <ng-template #elseTemplate>
+      <form>
+      <div>
+      <label for="short">résumé : </label><input type="text" name="short" id="short" value="{{recette.shortContent}}" [(ngModel)]="recette.shortContent">
+      </div>
+      <div>
+        <label for="content"> Description de la recette :</label><br>
+       <textarea name="content" id="content" cols="30" rows="10" value="{{recette.content}}" [(ngModel)]="recette.content"></textarea>
+       </div>
+       <button class="btn btn-success" (click)="valideRecette()"><i class="fas fa-check"></i></button>
+    </form>
+    </ng-template>
+
+    <div>
+      <ul>
+      <li *ngFor="let ingredient of recette.ingredients">
+      <app-ingredient [ingredient]="ingredient"></app-ingredient>
+    </li>
+      </ul>
+      <button class="btn btn-sucess" (click)="plus=true"><i class="fas fa-plus"></i></button>
+    </div>
   </ng-container>
+  <ng-container *ngIf="plus">
+      <div class="form-group form-inline">
+        <label for="my-select m-3">Ajout d'ingrédient</label>
+        <select id="my-select" class="form-control m-3" #t name="type" [(ngModel)]="typeIngredient">
+          <option *ngFor="let type of typeIngredient$ |async"  [ngValue]="type">{{type.nom}}</option>
+        </select>
+        <div *ngIf="typeIngredient" class="m-3">
+        <label for="quantite">
+          Quantité
+        </label>
+        <input type="number" name="quantite" id="quantite" class="form-control m-3" [(ngModel)]="quantite">
+        {{typeIngredient.unite.value}}
+        </div>
+        <button class="btn btn-success" (click)="addIngredient()"><i class="fas fa-check"></i></button>
+      </div>
+  </ng-container>
+
   <ng-template #elseTemplate>
     ...loading
   </ng-template>

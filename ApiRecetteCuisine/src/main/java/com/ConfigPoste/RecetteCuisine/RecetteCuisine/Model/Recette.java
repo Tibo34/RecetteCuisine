@@ -12,6 +12,11 @@ public class Recette {
     private String nom;
     private Collection<Ingredient> ingredients;
 
+
+
+    private String shortContent;
+    private String content;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -53,6 +58,25 @@ public class Recette {
         return result;
     }
 
+    @Basic
+    @Column(name="description" ,nullable = false)
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+    @Basic
+    @Column(name="descriptionShort" ,nullable = false)
+    public String getShortContent() {
+        return shortContent;
+    }
+
+    public void setShortContent(String shortContent) {
+        this.shortContent = shortContent;
+    }
+
     @OneToMany
     @JoinColumn(name = "recette_id", insertable = false, updatable = false)
     public Collection<Ingredient> getIngredients() {
@@ -61,5 +85,11 @@ public class Recette {
 
     public void setIngredients(Collection<Ingredient> ingredientsById) {
         this.ingredients = ingredientsById;
+    }
+
+    public void update(Recette recette){
+        content=recette.getContent();
+        shortContent=recette.getShortContent();
+        ingredients=recette.getIngredients();
     }
 }

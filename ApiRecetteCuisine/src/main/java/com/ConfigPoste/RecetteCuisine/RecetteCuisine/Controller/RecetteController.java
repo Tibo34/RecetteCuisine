@@ -49,4 +49,14 @@ public class RecetteController {
         recette = recetteRepository.save(recette);
         return recette;
     }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/update", method = RequestMethod.POST, produces = "application/json")
+    public Recette update(@RequestBody Recette recetteUpdate) {
+        logger.debug("recette update"+recetteUpdate.getId());
+        Recette recette=recetteRepository.findById(recetteUpdate.getId()).get();
+        recette.update(recetteUpdate);
+        recette = recetteRepository.save(recette);
+        return recette;
+    }
 }

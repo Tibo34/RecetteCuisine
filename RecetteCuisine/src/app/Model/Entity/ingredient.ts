@@ -1,4 +1,7 @@
+import { TypeIngredient } from './type-ingredient';
+
 export class Ingredient {
   id: number;
-  nom: string;
+  type: TypeIngredient;
+  quantite:number;
 }

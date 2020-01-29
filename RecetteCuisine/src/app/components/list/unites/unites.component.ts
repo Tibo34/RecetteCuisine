@@ -17,7 +17,7 @@ export class UnitesComponent implements OnInit {
 
   @ViewChildren(SortTableDirective) headers: QueryList<SortTableDirective>;
 
-  constructor(public uniteService:UniteService, private router: Router) { }
+  constructor(public uniteService: UniteService, private router: Router) { }
 
   ngOnInit() {
     this.unites$ = this.uniteService.unites$;
@@ -40,7 +40,7 @@ export class UnitesComponent implements OnInit {
 
 
 
-  newUnite(){
+  newUnite() {
     this.router.navigate(['unites/new']);
   }
 
