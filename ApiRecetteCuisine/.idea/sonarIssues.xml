@@ -163,6 +163,41 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Model/TypeIngredient.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../MSPR/integrationContinue/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../MSPR/integrationContinue/src/main/java/com/mspr/integrationContinue/integrationContinue/Controller/ProduitController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../MSPR/integrationContinue/src/main/java/com/mspr/integrationContinue/integrationContinue/Entity/Produit.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../MSPR/integrationContinue/src/main/java/com/mspr/integrationContinue/integrationContinue/Repository/ProduitRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../MSPR/integrationContinue/src/main/resources/application.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../MSPR/integrationContinue/src/main/resources/log4j.propeties">
+          <value>
+            <set />
+          </value>
+        </entry>
       </map>
     </option>
   </component>

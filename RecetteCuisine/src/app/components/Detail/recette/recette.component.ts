@@ -11,17 +11,15 @@ import { Route, ActivatedRoute } from '@angular/router';
 export class RecetteComponent implements OnInit {
 
   recette: Recette;
-  load=false;
+  load = false;
 
   constructor(private recetteService: RecetteService, private router: ActivatedRoute) { }
 
   ngOnInit() {
     const id = this.router.snapshot.params.id;
-    console.log(id);
     this.recetteService.getById(id).subscribe((recette: Recette) => {
       this.recette = recette;
-      console.log(recette);
-      this.load=true;
+      this.load = true;
     });
   }
 

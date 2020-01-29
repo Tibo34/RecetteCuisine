@@ -1,0 +1,9 @@
+<div>
+  <ng-container *ngIf="load; else elseTemplate">
+    <h1>{{typeIngredient.nom}}</h1>
+  </ng-container>
+  <ng-template #elseTemplate>
+    ...loading
+  </ng-template>
+</div>
+

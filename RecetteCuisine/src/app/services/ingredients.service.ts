@@ -1,23 +1,27 @@
-import {Injectable} from '@angular/core';
-import {Ingredient} from '../Model/Entity/ingredient';
-import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {environment} from 'src/environments/environment';
+import { Injectable } from '@angular/core';
+import { Ingredient } from '../Model/Entity/ingredient';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IngredientsService {
 
-  private ingredients: Ingredient[];
+  private _ingredients: Ingredient[];
   private url: string;
+
 
   constructor(private http: HttpClient) {
     this.url = environment.urldatabase + '/Ingredients';
+    this.getAll();
   }
 
-  getAll(): Observable<Ingredient[]> {
-    return this.http.get<Ingredient[]>(this.url);
+  getAll() {
+    this.http.get<Ingredient[]>(this.url).subscribe((ingredients: Ingredient[]) => {
+      this._ingredients = ingredients;
+    });
   }
 
   getById(id: number) {

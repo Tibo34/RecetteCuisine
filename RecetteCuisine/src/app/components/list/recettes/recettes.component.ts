@@ -45,7 +45,7 @@ export class RecettesComponent implements OnInit {
   }
 
   newRecette() {
-    this.router.navigate(['recettes/newRecette']);
+    this.router.navigate(['recettes/new']);
   }
 
 }

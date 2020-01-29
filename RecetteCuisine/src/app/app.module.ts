@@ -16,6 +16,9 @@ import {SortTableDirective} from './Model/Directives/sort-table.directive';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RecetteComponent } from './components/Detail/recette/recette.component';
 import { RecettePreviewComponent } from './components/Preview/recette-preview/recette-preview.component';
+import { IngredientsComponent } from './components/list/ingredients/ingredients.component';
+import { UnitesComponent } from './components/list/unites/unites.component';
+import { TypeingredientComponent } from './components/Detail/typeingredient/typeingredient.component';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { RecettePreviewComponent } from './components/Preview/recette-preview/re
     RecettesComponent,
     SortTableDirective,
     RecetteComponent,
-    RecettePreviewComponent
+    RecettePreviewComponent,
+    IngredientsComponent,
+    UnitesComponent,
+    TypeingredientComponent
   ],
   imports: [
     BrowserModule,

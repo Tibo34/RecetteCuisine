@@ -9,7 +9,7 @@ public class TypeIngredient {
     private String nom;
     private Integer uniteId;
 
-    private Unite uniteByUniteId;
+    private Unite unite;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -67,11 +67,11 @@ public class TypeIngredient {
 
     @ManyToOne
     @JoinColumn(name = "unite_id", referencedColumnName = "id")
-    public Unite getUniteByUniteId() {
-        return uniteByUniteId;
+    public Unite getUnite() {
+        return unite;
     }
 
-    public void setUniteByUniteId(Unite uniteByUniteId) {
-        this.uniteByUniteId = uniteByUniteId;
+    public void setUnite(Unite uniteByUniteId) {
+        this.unite = uniteByUniteId;
     }
 }

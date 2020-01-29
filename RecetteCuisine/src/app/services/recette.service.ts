@@ -1,19 +1,14 @@
-import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
-import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';
-import {environment} from 'src/environments/environment';
-import {SortDirection} from '../Model/Directives/sort-table.directive';
-import {Recette} from '../Model/Entity/recette';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
+import { debounceTime, delay, switchMap, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { SortDirection } from '../Model/Directives/sort-table.directive';
+import { Recette } from '../Model/Entity/recette';
+import { State } from '../Model/Interfaces/state';
 
 
-interface State {
-  page: number;
-  pageSize: number;
-  searchTerm: string;
-  sortColumn: string;
-  sortDirection: SortDirection;
-}
+
 
 interface SearchResult {
   recettes: Recette[];
@@ -35,7 +30,7 @@ function sort(recettes: Recette[], column: string, direction: string): Recette[]
   }
 }
 
-function matches(recette: Recette, term: string,) {
+function matches(recette: Recette, term: string, ) {
   return recette.nom.toLowerCase().includes(term.toLowerCase());
 }
 
@@ -119,23 +114,23 @@ export class RecetteService {
   }
 
   set page(page: number) {
-    this._set({page});
+    this._set({ page });
   }
 
   set pageSize(pageSize: number) {
-    this._set({pageSize});
+    this._set({ pageSize });
   }
 
   set sortColumn(sortColumn: string) {
-    this._set({sortColumn});
+    this._set({ sortColumn });
   }
 
   set sortDirection(sortDirection: SortDirection) {
-    this._set({sortDirection});
+    this._set({ sortDirection });
   }
 
   set searchTerm(searchTerm: string) {
-    this._set({searchTerm});
+    this._set({ searchTerm });
   }
 
   private _set(patch: Partial<State>) {
@@ -144,18 +139,18 @@ export class RecetteService {
   }
 
   private _search(): Observable<SearchResult> {
-    const {sortColumn, sortDirection, pageSize, page, searchTerm} = this._state;
+    const { sortColumn, sortDirection, pageSize, page, searchTerm } = this._state;
 
     // 1. sort
     let recettes = sort(this.RECETTES, sortColumn, sortDirection);
 
     // 2. filter
-    recettes = recettes.filter(country => matches(country, searchTerm));
+    recettes = recettes.filter(unite => matches(unite, searchTerm));
     const total = recettes.length;
 
     // 3. paginate
     recettes = recettes.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
-    return of({recettes, total});
+    return of({ recettes, total });
   }
 
 }
