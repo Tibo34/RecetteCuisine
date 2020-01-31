@@ -24,3 +24,16 @@ th[sortable].desc:before {
 h1{
   color:blueviolet;
 }
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  width: auto;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance:textfield;
+}

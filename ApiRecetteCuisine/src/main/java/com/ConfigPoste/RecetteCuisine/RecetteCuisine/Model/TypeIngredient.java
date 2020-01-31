@@ -8,11 +8,24 @@ public class TypeIngredient {
     private int id;
     private String nom;
     private Integer uniteId;
+    private String image;
 
     private Unite unite;
 
+    @Basic
+    @Column(name = "image" ,nullable = true)
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

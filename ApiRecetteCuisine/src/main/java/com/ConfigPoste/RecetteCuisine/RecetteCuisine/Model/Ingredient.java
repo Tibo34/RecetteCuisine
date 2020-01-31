@@ -9,11 +9,11 @@ public class Ingredient {
     private Integer typeId;
     private Double quantite;
     private Integer recetteId;
-    private TypeIngredient typeIngredientByTypeId;
+    private TypeIngredient type;
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
@@ -44,7 +44,7 @@ public class Ingredient {
     }
 
     @Basic
-    @Column(name = "recette_id", nullable = true, updatable = false, insertable = false)
+    @Column(name = "recette_id", updatable = false)
     public Integer getRecetteId() {
         return recetteId;
     }
@@ -79,12 +79,12 @@ public class Ingredient {
 
     @ManyToOne
     @JoinColumn(name = "type_id", referencedColumnName = "id")
-    public TypeIngredient getTypeIngredientByTypeId() {
-        return typeIngredientByTypeId;
+    public TypeIngredient getType() {
+        return type;
     }
 
-    public void setTypeIngredientByTypeId(TypeIngredient typeIngredientByTypeId) {
-        this.typeIngredientByTypeId = typeIngredientByTypeId;
+    public void setType(TypeIngredient typeIngredientByTypeId) {
+        this.type = typeIngredientByTypeId;
     }
 
 

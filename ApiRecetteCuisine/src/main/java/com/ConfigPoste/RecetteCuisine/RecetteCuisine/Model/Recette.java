@@ -11,14 +11,65 @@ public class Recette {
     private int id;
     private String nom;
     private Collection<Ingredient> ingredients;
-
-
-
+    private int personneMin=4;
+    private int tempCuisson=0;
+    private int tempPreparation=0;
+    private String image;
     private String shortContent;
     private String content;
 
+
+    @Basic
+    @Column(name="personne")
+    public int getPersonneMin() {
+        return personneMin;
+    }
+
+    public void setPersonneMin(int personneMin) {
+        this.personneMin = personneMin;
+    }
+
+
+
+    @Basic
+    @Column(name = "tempCuisson")
+    public int getTempCuisson() {
+        return tempCuisson;
+    }
+
+    public void setTempCuisson(int tempCuisson) {
+        this.tempCuisson = tempCuisson;
+    }
+
+    @Basic
+    @Column(name = "tempPreparation")
+    public int getTempPreparation() {
+        return tempPreparation;
+    }
+
+    public void setTempPreparation(int tempPreparation) {
+        this.tempPreparation = tempPreparation;
+    }
+
+
+    @OneToMany
+    @JoinColumn(name="recette_id")
+    public Collection<Etape> getEtapes() {
+        return etapes;
+    }
+
+    public void setEtapes(Collection<Etape> etapes) {
+        this.etapes = etapes;
+    }
+
+    private Collection<Etape> etapes;
+
+
+
+
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
@@ -87,9 +138,21 @@ public class Recette {
         this.ingredients = ingredientsById;
     }
 
+    @Basic
+    @Column(name="image",nullable = true)
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+
     public void update(Recette recette){
         content=recette.getContent();
         shortContent=recette.getShortContent();
         ingredients=recette.getIngredients();
+        etapes=recette.etapes;
     }
 }

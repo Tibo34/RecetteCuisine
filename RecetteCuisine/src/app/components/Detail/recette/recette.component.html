@@ -1,57 +1,106 @@
 <div>
-  <ng-container *ngIf="load; else elseTemplate">
+  <ng-container *ngIf="load; else elseTemplateLoad">
     <h1> <span>{{recette.nom}}</span>  <button class="btn btn-outline-primary" (click)="edit=!edit"><i class="far fa-edit"></i></button>
     </h1>
-    <ng-container *ngIf="edit; else elseTemplate">
+
+    <ng-container *ngIf="edit; else elseTemplateEdit">
       <div>
         {{recette.shortContent}}
       </div>
       <div>
-        <h2>Détail :</h2>
-       <p> {{recette.content}}</p>
+        <img src="assets/images/recttes/{{recette.image}}" alt="image" class="m-3">
       </div>
 
     </ng-container>
-    <ng-template #elseTemplate>
-      <form>
-      <div>
-      <label for="short">résumé : </label><input type="text" name="short" id="short" value="{{recette.shortContent}}" [(ngModel)]="recette.shortContent">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="card">
+        <div class="card-body">
+          <div class="card-title"> <h2> Préparation </h2></div>
+          <div class="card-text">
+            <div class="card">
+              <div class="card-body">
+                <div class="card-header text-center"> Temp total : {{recette.tempCuisson+recette.tempPreparation}}</div>
+                <div class="row">
+                  <div class="col justify-content-between text-center">Cuisson : {{recette.tempCuisson}}</div>
+                  <div class="col justify-content-between  text-center">Préparation :{{recette.tempPreparation}}</div>
+                </div>
+              </div>
+            </div>
+        <div class="mt-1 mb-1">
+        <h3>Etapes :</h3>
+        <ul class="list-group">
+        <li *ngFor="let etape of recette.etapes" class="list-group-item d-flex justify-content-between align-items-center">
+          <span class="badge badge-primary badge-pill m-3">{{etape.rang}}</span>  {{etape.content}}</li>
+        </ul>
+        <button class="btn btn-success m-3" (click)="addEtape=!addEtape"><i class="fas fa-plus"></i></button>
+        <ng-container *ngIf="addEtape">
+          <div class="form-inline">
+            <label for="ajoutEtape">Ajouter une étape : </label>
+            <input id="ajoutEtape" class="form-control" name="ajoutEtape" [(ngModel)]="content"/>
+            <button class="btn btn-success" (click)="newEtape()"><i class="fas fa-check"></i></button>
+          </div>
+        </ng-container>
       </div>
-      <div>
-        <label for="content"> Description de la recette :</label><br>
-       <textarea name="content" id="content" cols="30" rows="10" value="{{recette.content}}" [(ngModel)]="recette.content"></textarea>
-       </div>
-       <button class="btn btn-success" (click)="valideRecette()"><i class="fas fa-check"></i></button>
-    </form>
-    </ng-template>
-
-    <div>
-      <ul>
-      <li *ngFor="let ingredient of recette.ingredients">
-      <app-ingredient [ingredient]="ingredient"></app-ingredient>
-    </li>
-      </ul>
-      <button class="btn btn-sucess" (click)="plus=true"><i class="fas fa-plus"></i></button>
+      </div>
     </div>
-  </ng-container>
-  <ng-container *ngIf="plus">
-      <div class="form-group form-inline">
-        <label for="my-select m-3">Ajout d'ingrédient</label>
-        <select id="my-select" class="form-control m-3" #t name="type" [(ngModel)]="typeIngredient">
-          <option *ngFor="let type of typeIngredient$ |async"  [ngValue]="type">{{type.nom}}</option>
-        </select>
-        <div *ngIf="typeIngredient" class="m-3">
-        <label for="quantite">
-          Quantité
-        </label>
-        <input type="number" name="quantite" id="quantite" class="form-control m-3" [(ngModel)]="quantite">
-        {{typeIngredient.unite.value}}
+    </div>
+    </div>
+      <div class="col-sm">
+        <div class="card">
+        <div class="card-body">
+        <div class="card-title"><h2> Ingrédients  </h2> </div>
+        <div class="form-inline card-header justify-content-between">
+          <label for="quantity">Nombre</label>
+          <div>
+            <button (click)="downPersonne()" class="btn btn-outline-primary"><i class="fas fa-minus"></i></button>
+            <input class="quantity" min="{{recette.personneMin}}" name="quantity" type="number" [(ngModel)]="personnes" value="{{personnes}}" class="form-control">
+            <button (click)="upPersonne()" class="btn btn-outline-primary"><i class="fas fa-plus"></i></button>
+          </div>
         </div>
-        <button class="btn btn-success" (click)="addIngredient()"><i class="fas fa-check"></i></button>
+
+        <ul class="list-group mt-3 mb-3">
+          <li *ngFor="let ingredient of recette.ingredients" class="list-group-item d-flex justify-content-between align-items-center">
+            <app-ingredient [ingredient]="ingredient" [personnes]="personnes" [personneMin]="recette.personneMin"></app-ingredient>
+          </li>
+        </ul>
+        <button class="btn btn-success" (click)="plus=!plus"><i class="fas fa-plus"></i></button>
+        <ng-container *ngIf="plus">
+          <div class="form-group form-inline">
+            <label for="my-select m-3">Ajout d'ingrédient</label>
+            <select id="my-select" class="form-control m-3" #t name="type" [(ngModel)]="typeIngredient">
+              <option *ngFor="let type of typeIngredient$ |async"  [ngValue]="type">{{type.nom}}</option>
+            </select>
+            <div *ngIf="typeIngredient" class="m-3">
+            <label for="quantite">
+              Quantité
+            </label>
+            <input type="number" name="quantite" id="quantite" class="form-control m-3" [(ngModel)]="quantite">
+            {{typeIngredient.unite.value}}
+            </div>
+            <button class="btn btn-success" (click)="addIngredient()"><i class="fas fa-check"></i></button>
+          </div>
+        </ng-container>
       </div>
+      </div>
+      </div>
+    </div>
+  </div>
   </ng-container>
 
-  <ng-template #elseTemplate>
+
+  <ng-template #elseTemplateLoad>
     ...loading
+  </ng-template>
+
+  <ng-template #elseTemplateEdit>
+    <form>
+    <div>
+    <label for="short">résumé : </label><input type="text" name="short" id="short" value="{{recette.shortContent}}" [(ngModel)]="recette.shortContent">
+    </div>
+
+     <button class="btn btn-success" (click)="valideRecette()"><i class="fas fa-check"></i></button>
+  </form>
   </ng-template>
 </div>

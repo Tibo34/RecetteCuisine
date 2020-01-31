@@ -39,6 +39,15 @@ public class IngredientController {
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/create", method = RequestMethod.POST, produces = "application/json")
     public Ingredient createIngredient(@RequestBody Ingredient newIngredient) {
+        logger.debug(newIngredient.getRecetteId());
+        return ingredientRepository.save(newIngredient);
+    }
+
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/update", method = RequestMethod.POST, produces = "application/json")
+    public Ingredient updateIngredient(@RequestBody Ingredient newIngredient) {
+        //TODO: implement update
         return ingredientRepository.save(newIngredient);
     }
 }

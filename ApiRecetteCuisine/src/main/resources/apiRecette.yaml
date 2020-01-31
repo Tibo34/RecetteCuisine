@@ -1,0 +1,260 @@
+swagger: "2.0"
+info:
+  title: API Recette de cuisine
+  description: API les recettes de cuisine
+  version: 1.0.0
+host: api.example.com
+schemes:
+  - https
+paths:
+  /users:
+    get:
+      summary: Returns a list of users.
+      description: Optional extended description in Markdown.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+  /recettes:
+    get:
+      summary: Returns a list of recettes
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+  /recettes/{id}:
+    get:
+      summary: Return one recette
+      parameters:
+        - name: id
+          in: path
+          description: Recette id
+          type: number
+          required: true
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+
+  /recettes/create:
+    post:
+      summary: save a recette in database
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+  /recettes/upate:
+    post:
+      summary: update a recette in database
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+  /TypeIngredients:
+    get:
+      summary: Returns a list of type ingredients
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+  /TypeIngredients/{id}:
+    get:
+      summary: Returns a type ingredients
+      parameters:
+        - name: id
+          in: path
+          description: TypeIngredient ID
+          type: number
+          required: true
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+  /TypeIngredients/create:
+    post:
+      summary: save a type ingredient
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+  /TypeIngredients/update:
+    post:
+      summary: update a type ingredients
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+  /Unites:
+    get:
+      summary: Returns list of unites
+      produces:
+        - application/json
+      responses:
+          200:
+            description: OK
+  /Unites/{id}:
+    get:
+      summary: Return a unite
+      parameters:
+        - name: id
+          in: path
+          description: Unite ID
+          type: number
+          required: true
+      produces:
+        - application/json
+      responses:
+          200:
+            description: OK
+  /Unites/create:
+    post:
+      summary: save a unite
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+  /Unites/update:
+    post:
+      summary: update a unite
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+  /Ingredients:
+    get:
+      summary: Returns list of ingredients
+      produces:
+        - application/json
+      responses:
+        200:
+          description: ok
+  /Ingredients/{id}:
+    get:
+      summary: Return a ingredients
+      parameters:
+        - name: id
+          in: path
+          type: number
+          description: Ingredient id
+          required: true
+      produces:
+        - application/json
+      responses:
+        200:
+          description: ok
+  /Ingredients/create:
+    post:
+      summary: save a ingredients
+      produces:
+        - application/json
+      responses:
+        200:
+          description: ok
+  /Ingredients/post:
+    post:
+      summary: update a ingredients
+      produces:
+        - application/json
+      responses:
+        200:
+          description: ok
+definitions:
+  Recette:
+    type: object
+    required:
+      - id
+      - nom
+      - ingredients
+      - tempCuisson
+      - tempPreparation
+      - image
+    properties:
+      id:
+        type: number
+      nom:
+        type: string
+      ingedients:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: number
+            quantie:
+              type: number
+            type:
+              type: object
+              properties:
+                id:
+                  type: number
+                nom:
+                  type: string
+                unite:
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                    value:
+                      type: string
+                image:
+                  type: string
+      tempCuisson:
+        type: number
+      tempPreparation:
+        type: number
+      image :
+        type: string
+  Ingredient:
+    type: object
+    required:
+      - id
+      - quantite
+      - type
+    properties:
+      id:
+        type: number
+      quantie:
+        type: number
+      type:
+        type: object
+
+  TypeIngredient:
+    type: object
+    required:
+      - id
+      - nom
+      - unite
+      - image
+    properties:
+      id:
+        type: number
+      nom:
+        type: string
+      unite:
+        type: object
+      image:
+        type: string
+  Unite:
+    type: object
+    required:
+      - id
+      - value
+    properties:
+      id:
+        type: number
+      value:
+        type: string
+
+
+
