@@ -57,7 +57,7 @@ export class TypeIngredientService {
 
 
   constructor(private http: HttpClient) {
-    this.url = environment.urldatabase + '/TypeIngredients';
+    this.url = environment.urldatabase + 'TypeIngredients';
     this.getAll();
     this._search$.pipe(
       tap(() => this._loading$.next(true)),
@@ -75,7 +75,7 @@ export class TypeIngredientService {
   getAll() {
     this.http.get<TypeIngredient[]>(this.url).subscribe((ingredients: TypeIngredient[]) => {
       this.typeingredients = ingredients;
-      this._typeIngredients$.next(ingredients);
+      this._typeIngredients$.next(this.typeingredients);
       this._total$.next(ingredients.length);
     });
   }

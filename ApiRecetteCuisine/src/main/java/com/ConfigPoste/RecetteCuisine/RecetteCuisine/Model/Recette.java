@@ -17,6 +17,10 @@ public class Recette {
     private String image;
     private String shortContent;
     private String content;
+    private Theme theme;
+
+
+
 
 
     @Basic

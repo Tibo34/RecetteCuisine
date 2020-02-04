@@ -2,8 +2,8 @@ package com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller;
 
 
 import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Etape;
-import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Ingredient;
 import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Repository.EtapeRepository;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +16,7 @@ public class EtapeController {
 
     @Autowired
     private final EtapeRepository etapeRepository;
+    private Logger logger = Logger.getLogger(EtapeController.class);
 
     public EtapeController(EtapeRepository etapeRepository) {
         this.etapeRepository = etapeRepository;
@@ -38,6 +39,7 @@ public class EtapeController {
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/create", method = RequestMethod.POST, produces = "application/json")
     public Etape createIngredient(@RequestBody Etape etape) {
+        logger.debug(etape);
         return etapeRepository.save(etape);
     }
 

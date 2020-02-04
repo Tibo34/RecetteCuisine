@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { SortDirection } from '../Model/Directives/sort-table.directive';
 import { Recette } from '../Model/Entity/recette';
 import { State } from '../Model/Interfaces/state';
+import { Ingredient } from '../Model/Entity/ingredient';
 
 
 
@@ -75,7 +76,7 @@ export class RecetteService {
   getAll() {
     this.http.get<Recette[]>(this.url).subscribe((recettes: Recette[]) => {
       this.RECETTES = recettes;
-      this._recettes$.next(recettes);
+      this._recettes$.next(this.RECETTES);
       this._total$.next(recettes.length);
     });
   }

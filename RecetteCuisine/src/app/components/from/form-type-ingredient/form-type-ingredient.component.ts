@@ -29,7 +29,8 @@ export class FormTypeIngredientComponent implements OnInit {
 
   initForm() {
     this.formIngredient = this.formBuilder.group({
-      nom: ['', Validators.required]
+      nom: ['', Validators.required],
+      unite: [Unite]
     });
   }
 

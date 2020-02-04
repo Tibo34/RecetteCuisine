@@ -24,6 +24,9 @@ public class Unite {
     @Basic
     @Column(name = "value", nullable = true, length = 50)
     public String getValue() {
+        if(value.equals("nombre")){
+            return "-";
+        }
         return value;
     }
 

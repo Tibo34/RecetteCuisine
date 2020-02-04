@@ -1,1 +1,13 @@
-<p>home works!</p>
+<div class="card">
+  <img class="card-img-top" src="assets\cuisine.jpg" alt="Card image cap">
+  <div class="card-body">
+    <h1 class="card-title">Création d'un livre de cuisine</h1>
+
+    <p> Liste de recettes</p>
+    <button (click)="pdf=true">Créer pdf</button>
+    <div *ngIf="pdf">
+    <input type="text" name="pdf" id="pdf" [(ngModel)]="pdfText">
+    <button (click)="pdfCreate()">Créer</button>
+  </div>
+  </div>
+</div>
