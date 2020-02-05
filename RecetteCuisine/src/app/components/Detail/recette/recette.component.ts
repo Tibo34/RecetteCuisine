@@ -9,6 +9,8 @@ import { Ingredient } from 'src/app/Model/Entity/ingredient';
 import { Etape } from 'src/app/Model/Entity/etape';
 import { IngredientsService } from 'src/app/services/ingredients.service';
 import { EtapeService } from 'src/app/services/etape.service';
+import { ThemeService } from 'src/app/services/theme.service';
+import { Theme } from 'src/app/Model/Entity/theme';
 
 @Component({
   selector: 'app-recette',
@@ -21,20 +23,25 @@ export class RecetteComponent implements OnInit {
   load = false;
   typeIngredient: TypeIngredient;
   typeIngredient$: Observable<TypeIngredient[]>;
+  themes$: Observable<Theme[]>;
   quantite: number;
   personnes: number;
   content: string;
-
+  themeSelect: Theme;
+  tempCuisson: string;
+  tempPreparation: string;
   edit = true;
   plus = false;
   addEtape = false;
+  editTemp = false;
 
   constructor(
     private recetteService: RecetteService,
     private router: ActivatedRoute,
     private typeIngredientService: TypeIngredientService,
     private ingredientService: IngredientsService,
-    private etapeService: EtapeService) { }
+    private etapeService: EtapeService,
+    private themeService: ThemeService) { }
 
   ngOnInit() {
     const id = this.router.snapshot.params.id;
@@ -44,6 +51,11 @@ export class RecetteComponent implements OnInit {
       this.personnes = recette.personneMin;
     });
     this.typeIngredient$ = this.typeIngredientService.typeIngredients$;
+    this.themes$ = this.themeService.Themes$;
+  }
+
+  editTempPrepCuisson() {
+    this.editTemp = !this.editTemp;
   }
 
   valideRecette() {
@@ -51,6 +63,12 @@ export class RecetteComponent implements OnInit {
     this.recetteService.update(this.recette).subscribe((rep: Recette) => {
       this.recette = rep;
     });
+  }
+
+  updateTemp() {
+    this.recette.tempCuisson = parseInt(this.tempCuisson, 10);
+    this.recette.tempPreparation = parseInt(this.tempPreparation, 10);
+    this.valideRecette();
   }
 
   addIngredient() {
@@ -62,9 +80,18 @@ export class RecetteComponent implements OnInit {
     this.ingredientService.save(ingredient).subscribe((newIngredient: Ingredient) => {
       this.recette.ingredients.push(newIngredient);
     });
+  }
 
+  deleteIngredient(ingredient: Ingredient) {
+    this.ingredientService.delete(ingredient).subscribe(() => {
+      this.recette.ingredients = this.recette.ingredients.filter(i => i.id !== ingredient.id);
+    });
+  }
 
-    //this.valideRecette();
+  addTheme() {
+    console.log(this.themeSelect);
+    this.recette.theme = this.themeSelect;
+    this.valideRecette();
   }
 
   downPersonne() {

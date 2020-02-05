@@ -132,6 +132,15 @@ public class Recette {
         this.shortContent = shortContent;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "theme_id")
+    public Theme getTheme() {
+        return theme;
+    }
+
+    public void setTheme(Theme theme) {
+        this.theme = theme;
+    }
     @OneToMany
     @JoinColumn(name = "recette_id", insertable = false, updatable = false)
     public Collection<Ingredient> getIngredients() {
@@ -157,6 +166,11 @@ public class Recette {
         content=recette.getContent();
         shortContent=recette.getShortContent();
         ingredients=recette.getIngredients();
-        etapes=recette.etapes;
+        etapes=recette.getEtapes();
+        theme=recette.getTheme();
+        tempCuisson=recette.getTempCuisson();
+        tempPreparation=recette.getTempPreparation();
     }
+
+
 }

@@ -9,21 +9,15 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 })
 export class PdfService {
 
-  private url: string;
+
   private pdf = new PdfMakeWrapper();
 
-  constructor(private http: HttpClient) {
-    this.url = environment.urldatabase + 'pdf';
-  }
+  constructor() { }
 
   async createPDF(str: string) {
     PdfMakeWrapper.setFonts(pdfFonts);
-    const data = { message: str };
-    /*this.http.post(this.url, str).subscribe((rep) => {
-      console.log(rep);
-    });*/
     this.pdf.add(str);
-    const image=new Img('assets/cuisine.jpg').build();
+    const image = new Img('assets/cuisine.jpg').build();
     this.pdf.add(await image);
     this.pdf.create().download();
 

@@ -20,6 +20,8 @@ import { IngredientsComponent } from './components/list/ingredients/ingredients.
 import { UnitesComponent } from './components/list/unites/unites.component';
 import { TypeingredientComponent } from './components/Detail/typeingredient/typeingredient.component';
 import { IngredientComponent } from './components/Detail/ingredient/ingredient.component';
+import { ThemesComponent } from './components/list/themes/themes.component';
+import { FormThemeComponent } from './components/from/form-theme/form-theme.component';
 
 
 
@@ -39,7 +41,9 @@ import { IngredientComponent } from './components/Detail/ingredient/ingredient.c
     IngredientsComponent,
     UnitesComponent,
     TypeingredientComponent,
-    IngredientComponent
+    IngredientComponent,
+    ThemesComponent,
+    FormThemeComponent
   ],
   imports: [
     BrowserModule,

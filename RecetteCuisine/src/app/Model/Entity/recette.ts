@@ -1,5 +1,6 @@
 import { Ingredient } from './ingredient';
 import { Etape } from './etape';
+import { Theme } from './theme';
 
 export class Recette {
   id: number;
@@ -11,5 +12,6 @@ export class Recette {
   etapes: Etape[];
   tempCuisson: number;
   tempPreparation: number;
-  personneMin:number;
+  personneMin: number;
+  theme: Theme;
 }

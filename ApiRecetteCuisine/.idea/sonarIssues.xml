@@ -53,6 +53,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Controller/ThemeController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Controller/TypeIngredientController.java">
           <value>
             <set />
@@ -139,6 +144,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Repository/Repository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Repository/ThemeRepository.java">
           <value>
             <set />
           </value>

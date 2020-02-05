@@ -7,6 +7,14 @@
       <div>
         {{recette.shortContent}}
       </div>
+      <div *ngIf="recette.theme">
+        {{recette.theme.nom}}
+      </div>
+      <div *ngIf="!recette.theme">
+        <select [(ngModel)]="themeSelect" (change)="addTheme()">
+          <option *ngFor="let theme of themes$ | async" [ngValue]="theme">{{theme.nom}}</option>
+        </select>
+      </div>
       <div>
         <img src="assets/images/recttes/{{recette.image}}" alt="image" class="m-3">
       </div>
@@ -20,11 +28,24 @@
           <div class="card-title"> <h2> Préparation </h2></div>
           <div class="card-text">
             <div class="card">
-              <div class="card-body">
-                <div class="card-header text-center"> Temp total : {{recette.tempCuisson+recette.tempPreparation}}</div>
+              <div class="card-body" >
+                <div class="card-header text-center"> Temp total : {{recette.tempCuisson+recette.tempPreparation}} <button (click)="editTempPrepCuisson()" class="btn btn-sm btn-success"><i class="far fa-edit"></i></button></div>
                 <div class="row">
-                  <div class="col justify-content-between text-center">Cuisson : {{recette.tempCuisson}}</div>
-                  <div class="col justify-content-between  text-center">Préparation :{{recette.tempPreparation}}</div>
+                  <ng-container *ngIf="editTemp; else elseTemplateTemp">
+                      <div class="form-inline">
+                        <label for="cuisson">Temps de cuisson</label>
+                        <input type="text" name="cuisson" id="cuisson" [(ngModel)]="tempCuisson">
+                      </div>
+                      <div class="form-inline">
+                        <label for="preparation">Temps de prépatation</label>
+                        <input type="text" name="preparation" id="preparation" [(ngModel)]="tempPreparation">
+                      </div>
+                      <button class="btn btn-success" (click)="updateTemp()"><i class="fas fa-check"></i></button>
+                  </ng-container>
+                  <ng-template #elseTemplateTemp>
+                    <div class="col justify-content-between text-center">Cuisson : {{recette.tempCuisson}}</div>
+                    <div class="col justify-content-between  text-center">Préparation :{{recette.tempPreparation}}</div>
+                  </ng-template>
                 </div>
               </div>
             </div>
@@ -51,6 +72,7 @@
         <div class="card">
         <div class="card-body">
         <div class="card-title"><h2> Ingrédients  </h2> </div>
+        <div class="card-text">
         <div class="form-inline card-header justify-content-between">
           <label for="quantity">Nombre</label>
           <div>
@@ -62,7 +84,7 @@
 
         <ul class="list-group mt-3 mb-3">
           <li *ngFor="let ingredient of recette.ingredients" class="list-group-item d-flex justify-content-between align-items-center">
-            <app-ingredient [ingredient]="ingredient" [personnes]="personnes" [personneMin]="recette.personneMin"></app-ingredient>
+            <app-ingredient [ingredient]="ingredient" [personnes]="personnes" [personneMin]="recette.personneMin"></app-ingredient> <button class="btn btn-sm btn-danger" (click)="deleteIngredient(ingredient)"><i class="far fa-times-circle"></i></button>
           </li>
         </ul>
         <button class="btn btn-success" (click)="plus=!plus"><i class="fas fa-plus"></i></button>
@@ -82,6 +104,7 @@
             <button class="btn btn-success" (click)="addIngredient()"><i class="fas fa-check"></i></button>
           </div>
         </ng-container>
+      </div>
       </div>
       </div>
       </div>

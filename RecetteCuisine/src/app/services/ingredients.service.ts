@@ -14,7 +14,7 @@ export class IngredientsService {
 
 
   constructor(private http: HttpClient) {
-    this.url = environment.urldatabase + '/Ingredients';
+    this.url = environment.urldatabase + 'Ingredients';
     this.getAll();
   }
 
@@ -30,5 +30,9 @@ export class IngredientsService {
 
   save(ingredient: Ingredient) {
     return this.http.post(this.url + '/create', ingredient);
+  }
+
+  delete(ingredient: Ingredient) {
+    return this.http.get(this.url + '/delete/' + ingredient.id);
   }
 }

@@ -1,0 +1,37 @@
+<div>
+  <div class="form-group form-inline">
+    Recherche: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="themeService.searchTerm"/>
+    <span class="ml-3" *ngIf="themeService.loading$ | async">Loading...</span>
+    <button class="btn btn-outline-primary m-3" (click)="newTheme()" placement="top" ngbTooltip="Ajouter une recette">
+      <i class="far fa-plus-square"></i></button>
+  </div>
+  <h1> <span>Liste des Themes</span></h1>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+    <th scope="col">#</th>
+    <th scope="col" sortable="nom" (sort)="onSort($event)">Nom</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let theme of themes$ | async">
+      <td scope="row">{{theme.id}}</td>
+      <td>
+        <ngb-highlight [result]="theme.nom" [term]="themeService.searchTerm"></ngb-highlight>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="total$ | async" [(page)]="themeService.page"
+                    [pageSize]="themeService.pageSize">
+    </ngb-pagination>
+
+    <select class="custom-select" style="width: auto" [(ngModel)]="themeService.pageSize">
+      <option [ngValue]="2">2 items per page</option>
+      <option [ngValue]="4">4 items per page</option>
+      <option [ngValue]="6">6 items per page</option>
+    </select>
+  </div>
+
+  <router-outlet></router-outlet>
+
+</div>

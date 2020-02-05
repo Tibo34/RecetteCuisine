@@ -50,4 +50,13 @@ public class IngredientController {
         //TODO: implement update
         return ingredientRepository.save(newIngredient);
     }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET, produces = "application/json")
+    public Ingredient delete(@PathVariable int id) {
+        Ingredient ingredient=ingredientRepository.findById(id).get();
+        ingredientRepository.delete(ingredient);
+        return ingredient;
+    }
+
 }

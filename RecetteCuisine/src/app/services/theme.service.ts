@@ -1,18 +1,15 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
-import { debounceTime, delay, switchMap, tap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
-import { SortDirection } from '../Model/Directives/sort-table.directive';
-import { Recette } from '../Model/Entity/recette';
+import { Theme } from '../Model/Entity/theme';
+import { BehaviorSubject, Subject, Observable, of } from 'rxjs';
 import { State } from '../Model/Interfaces/state';
-
-
-
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { tap, debounceTime, switchMap, delay } from 'rxjs/operators';
+import { SortDirection } from '../Model/Directives/sort-table.directive';
 
 
 interface SearchResult {
-  recettes: Recette[];
+  themes: Theme[];
   total: number;
 }
 
@@ -20,29 +17,28 @@ function compare(v1, v2) {
   return v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
 }
 
-function sort(recettes: Recette[], column: string, direction: string): Recette[] {
+function sort(themes: Theme[], column: string, direction: string): Theme[] {
   if (direction === '') {
-    return recettes;
+    return themes;
   } else {
-    return [...recettes].sort((a, b) => {
+    return [...themes].sort((a, b) => {
       const res = compare(a[column], b[column]);
       return direction === 'asc' ? res : -res;
     });
   }
 }
 
-function matches(recette: Recette, term: string, ) {
-  return recette.nom.toLowerCase().includes(term.toLowerCase());
+function matches(theme: Theme, term: string, ) {
+  return theme.nom.toLowerCase().includes(term.toLowerCase());
 }
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class RecetteService {
+export class ThemeService {
 
-  private RECETTES: Recette[] = [];
-  private _recettes$ = new BehaviorSubject<Recette[]>([]);
+  private THEMES: Theme[] = [];
+  private _themes$ = new BehaviorSubject<Theme[]>([]);
   private _total$ = new BehaviorSubject<number>(0);
   private _loading$ = new BehaviorSubject<boolean>(true);
   private url: string;
@@ -58,7 +54,7 @@ export class RecetteService {
   };
 
   constructor(private http: HttpClient) {
-    this.url = environment.urldatabase + '/Recettes';
+    this.url = environment.urldatabase + '/Themes';
     this.getAll();
     this._search$.pipe(
       tap(() => this._loading$.next(true)),
@@ -67,35 +63,38 @@ export class RecetteService {
       delay(200),
       tap(() => this._loading$.next(false))
     ).subscribe(result => {
-      this._recettes$.next(result.recettes);
+      this._themes$.next(result.themes);
       this._total$.next(result.total);
     });
     this._search$.next();
   }
 
+
   getAll() {
-    this.http.get<Recette[]>(this.url).subscribe((recettes: Recette[]) => {
-      this.RECETTES = recettes;
-      this._recettes$.next(this.RECETTES);
-      this._total$.next(recettes.length);
+    this.http.get<Theme[]>(this.url).subscribe((themes: Theme[]) => {
+      this.THEMES = themes;
+      this._themes$.next(this.THEMES);
+      this._total$.next(themes.length);
     });
   }
 
 
+
+
   getById(id: number) {
-    return this.http.get<Recette>(this.url + '/' + id);
+    return this.http.get<Theme>(this.url + '/' + id);
   }
 
-  save(recette: Recette) {
-    return this.http.post(this.url + '/create', recette);
+  save(theme: Theme) {
+    return this.http.post(this.url + '/create', theme);
   }
 
-  update(recette: Recette) {
-    return this.http.post(this.url + '/update', recette);
+  update(theme: Theme) {
+    return this.http.post(this.url + '/update', theme);
   }
 
-  get recettes$() {
-    return this._recettes$.asObservable();
+  get Themes$() {
+    return this._themes$.asObservable();
   }
 
   get total$() {
@@ -147,15 +146,14 @@ export class RecetteService {
     const { sortColumn, sortDirection, pageSize, page, searchTerm } = this._state;
 
     // 1. sort
-    let recettes = sort(this.RECETTES, sortColumn, sortDirection);
+    let themes = sort(this.THEMES, sortColumn, sortDirection);
 
     // 2. filter
-    recettes = recettes.filter(unite => matches(unite, searchTerm));
-    const total = recettes.length;
+    themes = themes.filter(unite => matches(unite, searchTerm));
+    const total = themes.length;
 
     // 3. paginate
-    recettes = recettes.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
-    return of({ recettes, total });
+    themes = themes.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
+    return of({ themes, total });
   }
-
 }

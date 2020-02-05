@@ -9,10 +9,17 @@ import { FormTypeIngredientComponent } from './components/from/form-type-ingredi
 import { TypeingredientComponent } from './components/Detail/typeingredient/typeingredient.component';
 import { UnitesComponent } from './components/list/unites/unites.component';
 import { FromUniteComponent } from './components/from/from-unite/from-unite.component';
+import { ThemesComponent } from './components/list/themes/themes.component';
+import { FormThemeComponent } from './components/from/form-theme/form-theme.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  {
+    path: 'theme', component: ThemesComponent, children: [
+      { path: 'new', component: FormThemeComponent }
+    ]
+  },
   {
     path: 'recettes', component: RecettesComponent, children: [
       { path: 'new', component: FromRecetteComponent },

@@ -1,0 +1,11 @@
+<form [formGroup]="formTheme" class="form-group form-inline">
+  <label for="nom" class="m-2">
+    Nom theme :
+    <input type="text" id="nom" formControlName="nom" class="form-control ml-2">
+  </label>
+
+  <button type="submit" class="btn btn-outline-primary m-3" placement="top" ngbTooltip="Sauvegarder" (click)="submit()">
+    <i class="far fa-save"></i></button>
+  <button class="btn btn-outline-danger" placement="top" ngbTooltip="Fermé"><i class="far fa-window-close"></i></button>
+</form>
+

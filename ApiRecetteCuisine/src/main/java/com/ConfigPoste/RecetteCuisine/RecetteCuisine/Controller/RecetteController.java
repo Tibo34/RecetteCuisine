@@ -65,9 +65,10 @@ public class RecetteController {
     public Recette update(@RequestBody Recette recetteUpdate) {
         logger.debug("recette update"+recetteUpdate.getId());
         Recette recette=recetteRepository.findById(recetteUpdate.getId()).get();
-        moreEtape(recette,recetteUpdate);
-        moreOperation(recette,recetteUpdate);
+       // moreEtape(recette,recetteUpdate);
+       // moreOperation(recette,recetteUpdate);
         recette.update(recetteUpdate);
+        logger.debug(recette.getTheme());
         recette = recetteRepository.save(recette);
         recette=recetteRepository.findById(recetteUpdate.getId()).get();
         return recette;
