@@ -11,9 +11,11 @@
     <th scope="col">#</th>
     <th scope="col" sortable="nom" (sort)="onSort($event)">Nom</th>
     <th scope="col" sortable="shortContent" (sort)="onSort($event)">Description</th>
+    <th scope="col">Theme</th>
+    <th></th>
     </thead>
     <tbody>
-    <tr *ngFor="let recette of recettes$ | async" (click)="recetteDetail(recette.id)">
+    <tr *ngFor="let recette of recettes$ | async" >
       <td scope="row">{{recette.id}}</td>
       <td>
         <ngb-highlight [result]="recette.nom" [term]="recettesService.searchTerm"></ngb-highlight>
@@ -21,6 +23,11 @@
       <td>
         <ngb-highlight [result]="recette.shortContent" [term]="recettesService.searchTerm"></ngb-highlight>
       </td>
+      <td>
+        <ngb-highlight [result]="recette.theme.nom" [term]="recettesService.searchTerm"></ngb-highlight>
+      </td>
+      <td><button class="btn btn-sm btn-outline-success mr-3 ml-3" (click)="addRecette(recette)"><i class="fas fa-plus"></i></button>
+        <button class="btn btn-sm btn-outline-primary ml-3" (click)="recetteDetail(recette.id)"><i class="far fa-eye"></i></button></td>
     </tr>
     </tbody>
   </table>

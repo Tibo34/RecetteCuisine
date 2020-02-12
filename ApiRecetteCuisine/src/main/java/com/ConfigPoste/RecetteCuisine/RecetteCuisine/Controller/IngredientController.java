@@ -1,10 +1,14 @@
 package com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller;
 
+import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.FileImage;
 import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Ingredient;
 import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Repository.IngredientRepository;
+import com.ConfigPoste.RecetteCuisine.RecetteCuisine.services.DBFileStorageService;
+import com.ConfigPoste.RecetteCuisine.RecetteCuisine.services.FileStorageException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +20,8 @@ public class IngredientController {
     @Autowired
     private final IngredientRepository ingredientRepository;
     private Logger logger = Logger.getLogger(IngredientController.class);
+    @Autowired
+    private DBFileStorageService dbFileStorageService;
 
     public IngredientController(IngredientRepository ingredientRepository) {
         this.ingredientRepository = ingredientRepository;
@@ -40,7 +46,8 @@ public class IngredientController {
     @RequestMapping(value = "/create", method = RequestMethod.POST, produces = "application/json")
     public Ingredient createIngredient(@RequestBody Ingredient newIngredient) {
         logger.debug(newIngredient.getRecetteId());
-        return ingredientRepository.save(newIngredient);
+       newIngredient=ingredientRepository.save(newIngredient);
+       return newIngredient;
     }
 
 

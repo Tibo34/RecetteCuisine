@@ -1,4 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Recette } from 'src/app/Model/Entity/recette';
+import { RecetteService } from 'src/app/services/recette.service';
+import { Observable } from 'rxjs';
+import { PdfService } from 'src/app/services/pdf.service';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +11,22 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() {
+  panier: Observable<Recette[]>;
+  nb: Observable<number>;
+  notEmpty: Observable<boolean>;
+
+  constructor(private recetteService: RecetteService, private pdfService: PdfService) {
   }
 
   ngOnInit() {
+    this.panier = this.recetteService.panierRecette;
+    this.nb = this.recetteService.totalPanier;
+    this.notEmpty = this.recetteService.notEmpty;
+  }
+
+  createPDF() {
+    const title = "nouveau livre";
+    this.pdfService.createPDF(title);
   }
 
 }

@@ -11,6 +11,7 @@ import { IngredientsService } from 'src/app/services/ingredients.service';
 import { EtapeService } from 'src/app/services/etape.service';
 import { ThemeService } from 'src/app/services/theme.service';
 import { Theme } from 'src/app/Model/Entity/theme';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-recette',
@@ -34,6 +35,8 @@ export class RecetteComponent implements OnInit {
   plus = false;
   addEtape = false;
   editTemp = false;
+  urlImageRecette = environment.urldatabase + "file/recettes/";
+  urlImageIngredient = environment.urldatabase + "file/ingredient/";
 
   constructor(
     private recetteService: RecetteService,

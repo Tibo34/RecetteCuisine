@@ -12,6 +12,10 @@ public class Ingredient {
     private TypeIngredient type;
 
 
+    @Basic
+    @Column(name="image_id")
+    private int id_image;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -88,4 +92,11 @@ public class Ingredient {
     }
 
 
+    public int getId_image() {
+        return id_image;
+    }
+
+    public void setId_image(int fileImage) {
+        this.id_image = fileImage;
+    }
 }

@@ -48,6 +48,11 @@ export class RecetteService {
   private url: string;
   private _search$ = new Subject<void>();
 
+  private panierRecette$ = new BehaviorSubject<Recette[]>([]);
+  private PANIER: Recette[] = [];
+  private totalPanier$ = new BehaviorSubject<number>(0);
+  private notEmpty$ = new BehaviorSubject<boolean>(false);
+
 
   private _state: State = {
     page: 1,
@@ -57,8 +62,10 @@ export class RecetteService {
     sortDirection: ''
   };
 
+
+
   constructor(private http: HttpClient) {
-    this.url = environment.urldatabase + '/Recettes';
+    this.url = environment.urldatabase + 'Recettes';
     this.getAll();
     this._search$.pipe(
       tap(() => this._loading$.next(true)),
@@ -71,6 +78,30 @@ export class RecetteService {
       this._total$.next(result.total);
     });
     this._search$.next();
+  }
+
+  public get notEmpty() {
+    return this.notEmpty$.asObservable();
+  }
+
+  public get panierRecette() {
+    return this.panierRecette$.asObservable();
+  }
+
+  public addRecette(recette: Recette) {
+    this.PANIER.push(recette);
+    this.notEmpty$.next(this.PANIER.length > 0);
+    this.panierRecette$.next(this.PANIER);
+    this.totalPanier$.next(this.PANIER.length);
+  }
+
+  public get totalPanier() {
+    return this.totalPanier$.asObservable();
+  }
+  public removeRecette(recette: Recette) {
+    this.PANIER = this.PANIER.filter(r => r.id !== recette.id);
+    this.notEmpty$.next(this.PANIER.length > 0);
+    this.panierRecette$.next(this.PANIER);
   }
 
   getAll() {

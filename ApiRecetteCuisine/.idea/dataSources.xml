@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:9906/recetteCuisine</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="mysql-google" uuid="32701e14-583c-46c6-ba8b-2b0d60879225">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://34.65.164.61:3306/recetteCuisine</jdbc-url>
+    </data-source>
   </component>
 </project>

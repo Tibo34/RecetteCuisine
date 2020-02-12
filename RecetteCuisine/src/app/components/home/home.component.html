@@ -2,8 +2,10 @@
   <img class="card-img-top" src="assets\cuisine.jpg" alt="Card image cap">
   <div class="card-body">
     <h1 class="card-title">Création d'un livre de cuisine</h1>
-
     <p> Liste de recettes</p>
+    <label for="image">Image</label>
+    <input type="file" name="image" id="image"  (change)="uploadImage($event.target.files)"/>
+    <img src="http://localhost:9090/file//downloadFile/1" alt="file data base">
     <button (click)="pdf=true">Créer pdf</button>
     <div *ngIf="pdf">
     <input type="text" name="pdf" id="pdf" [(ngModel)]="pdfText">

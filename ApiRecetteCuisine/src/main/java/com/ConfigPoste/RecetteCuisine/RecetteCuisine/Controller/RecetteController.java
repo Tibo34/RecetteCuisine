@@ -1,14 +1,19 @@
 package com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller;
 
 import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Etape;
+import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.FileImage;
 import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Ingredient;
 import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Recette;
 import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Repository.EtapeRepository;
+import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Repository.FileImageRepository;
 import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Repository.IngredientRepository;
 import com.ConfigPoste.RecetteCuisine.RecetteCuisine.Repository.RecetteRepository;
+import com.ConfigPoste.RecetteCuisine.RecetteCuisine.services.DBFileStorageService;
+import com.ConfigPoste.RecetteCuisine.RecetteCuisine.services.FileStorageException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,6 +28,8 @@ public class RecetteController {
     private final EtapeRepository etapeRepository;
     @Autowired
     private final IngredientRepository ingredientRepository;
+    @Autowired
+    private DBFileStorageService dbFileStorageService;
 
     private Logger logger = Logger.getLogger(RecetteController.class);
 
@@ -46,16 +53,13 @@ public class RecetteController {
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
     public Recette afficherRecette(@PathVariable int id) {
-        logger.debug("recette : " + id);
         Optional<Recette> recette = recetteRepository.findById(id);
-        logger.debug(recette);
         return recette.get();
     }
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/create", method = RequestMethod.POST, produces = "application/json")
     public Recette saveRecette(@RequestBody Recette recette) {
-        logger.debug(recette);
         recette = recetteRepository.save(recette);
         return recette;
     }
@@ -65,8 +69,6 @@ public class RecetteController {
     public Recette update(@RequestBody Recette recetteUpdate) {
         logger.debug("recette update"+recetteUpdate.getId());
         Recette recette=recetteRepository.findById(recetteUpdate.getId()).get();
-       // moreEtape(recette,recetteUpdate);
-       // moreOperation(recette,recetteUpdate);
         recette.update(recetteUpdate);
         logger.debug(recette.getTheme());
         recette = recetteRepository.save(recette);

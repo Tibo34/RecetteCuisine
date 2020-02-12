@@ -52,4 +52,8 @@ export class RecettesComponent implements OnInit {
     this.router.navigate(['recettes/update']);
   }
 
+  addRecette(recette: Recette) {
+    this.recettesService.addRecette(recette);
+  }
+
 }

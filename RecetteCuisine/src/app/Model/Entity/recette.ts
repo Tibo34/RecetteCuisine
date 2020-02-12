@@ -14,4 +14,5 @@ export class Recette {
   tempPreparation: number;
   personneMin: number;
   theme: Theme;
+  imageId: number;
 }

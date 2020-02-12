@@ -18,9 +18,17 @@
       </li>
       <li><a class="nav-link" [routerLink]="['theme']" routerLinkActive="router-linl-active">Theme</a></li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <button class="btn btn-sm btn-outline-primary" (click)="createPDF()"><i class="far fa-file-pdf"></i></button>
+    <div ngbDropdown class="d-inline-block">
+    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle><span class="badge badge-light">{{nb | async}}</span><i class="fas fa-shopping-cart"></i></button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <ng-container *ngIf="notEmpty | async; else elseTemplate">
+        <div *ngFor="let recette of panier | async"><img src="assets/images/recettes/{{recette.image}}" alt="">{{recette.nom}}</div>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <div>vide</div>
+        </ng-template>
+        </div>
+    </div>
   </div>
 </nav>

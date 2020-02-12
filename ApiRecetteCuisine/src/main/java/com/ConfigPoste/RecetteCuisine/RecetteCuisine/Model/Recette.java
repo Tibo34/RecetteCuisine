@@ -16,11 +16,10 @@ public class Recette {
     private int tempPreparation=0;
     private String image;
     private String shortContent;
-    private String content;
     private Theme theme;
 
-
-
+    @Column(name="image_id")
+    private String imageId;
 
 
     @Basic
@@ -32,7 +31,6 @@ public class Recette {
     public void setPersonneMin(int personneMin) {
         this.personneMin = personneMin;
     }
-
 
 
     @Basic
@@ -114,15 +112,6 @@ public class Recette {
     }
 
     @Basic
-    @Column(name="description" ,nullable = false)
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-    @Basic
     @Column(name="descriptionShort" ,nullable = false)
     public String getShortContent() {
         return shortContent;
@@ -163,7 +152,6 @@ public class Recette {
 
 
     public void update(Recette recette){
-        content=recette.getContent();
         shortContent=recette.getShortContent();
         ingredients=recette.getIngredients();
         etapes=recette.getEtapes();
@@ -173,4 +161,11 @@ public class Recette {
     }
 
 
+    public String getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
+    }
 }

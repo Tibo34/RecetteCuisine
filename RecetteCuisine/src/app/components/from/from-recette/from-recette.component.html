@@ -1,8 +1,16 @@
-<form [formGroup]="formRecette" class="form-group form-inline">
-  <label>
-    Nom recette :
-    <input type="text" formControlName="nom" class="form-control ml-2">
-  </label>
+<form [formGroup]="formRecette">
+  <div class="form-group">
+    <label for="nom"> Nom recette : </label>
+    <input type="text" formControlName="nom" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="content">Description : </label>
+    <input type="text" name="content" id="content" class="form-control" formControlName="content">
+  </div>
+  <div class="custom-file">
+    <label for="image">Image : </label>
+    <input type="file" name="image" id="image"  (change)="uploadImage($event.target.files)" class="custom-file-label"/>
+  </div>
   <button type="submit" class="btn btn-outline-primary m-3" placement="top" ngbTooltip="Sauvegarder" (click)="submit()">
     <i class="far fa-save"></i></button>
   <button class="btn btn-outline-danger" placement="top" ngbTooltip="Fermé"><i class="far fa-window-close"></i></button>
