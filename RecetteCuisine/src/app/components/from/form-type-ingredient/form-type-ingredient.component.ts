@@ -17,6 +17,7 @@ export class FormTypeIngredientComponent implements OnInit {
   formIngredient: FormGroup;
   uniteSelect: Unite;
   unites: Observable<Unite[]>;
+  fileToUpload: File = null;
 
   constructor(private formBuilder: FormBuilder, private typeService: TypeIngredientService, private uniteService: UniteService) {
   }
@@ -32,6 +33,10 @@ export class FormTypeIngredientComponent implements OnInit {
       nom: ['', Validators.required],
       unite: [Unite]
     });
+  }
+
+  uploadImage(files: FileList) {
+    this.fileToUpload = files.item(0);
   }
 
 

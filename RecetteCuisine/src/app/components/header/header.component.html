@@ -18,9 +18,9 @@
       </li>
       <li><a class="nav-link" [routerLink]="['theme']" routerLinkActive="router-linl-active">Theme</a></li>
     </ul>
-    <button class="btn btn-sm btn-outline-primary" (click)="createPDF()"><i class="far fa-file-pdf"></i></button>
+    <button class="btn btn-sm btn-outline-primary m-3" (click)="createPDF()"><i class="far fa-file-pdf"></i></button>
     <div ngbDropdown class="d-inline-block">
-    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle><span class="badge badge-light">{{nb | async}}</span><i class="fas fa-shopping-cart"></i></button>
+    <button class="btn btn-sm btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle><span class="badge badge-light m-1">{{nb | async}}</span><i class="fas fa-shopping-cart"></i></button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
         <ng-container *ngIf="notEmpty | async; else elseTemplate">
         <div *ngFor="let recette of panier | async"><img src="assets/images/recettes/{{recette.image}}" alt="">{{recette.nom}}</div>

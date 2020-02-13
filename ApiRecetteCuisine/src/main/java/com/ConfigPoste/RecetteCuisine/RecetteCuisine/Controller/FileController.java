@@ -43,58 +43,6 @@ public class FileController {
 
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "recettes/{filename}", method = RequestMethod.GET,
-            produces = MediaType.IMAGE_JPEG_VALUE)
-    public ResponseEntity<byte[]> getRecettes(@PathVariable String filename) throws IOException {
-        logger.info(filename);
-        byte[] bytes = StreamUtils.copyToByteArray(new ClassPathResource("images/recettes/"+filename+".jpg").getInputStream());
-        return ResponseEntity
-                .ok()
-                .contentType(MediaType.IMAGE_JPEG)
-                .body(bytes);
-    }
-
-    @CrossOrigin(origins = "*")
-    @RequestMapping(value = "ingredients/{filename}", method = RequestMethod.GET,
-            produces = MediaType.IMAGE_JPEG_VALUE)
-    public ResponseEntity<byte[]> getIngedients(@PathVariable String filename) throws IOException {
-        logger.info(filename);
-        byte[] bytes = StreamUtils.copyToByteArray(new ClassPathResource("images/ingredients/"+filename+".jpg").getInputStream());
-        return ResponseEntity
-                .ok()
-                .contentType(MediaType.IMAGE_JPEG)
-                .body(bytes);
-    }
-
-    @CrossOrigin(origins = "*")
-    @PostMapping("/upload/recettes")
-    public String uploadFileRecettes(@RequestParam("file") MultipartFile file) {
-        storeFile(file,"/recettes/");
-        return "{message:'fichier chargé'}";
-    }
-
-    @CrossOrigin(origins = "*")
-    @PostMapping("/upload/ingredients")
-    public String uploadFileIngredients(@RequestParam("file") MultipartFile file) {
-        storeFile(file,"/ingredients/");
-        return "{message:'fichier chargé'}";
-    }
-
-    private void storeFile(MultipartFile file,String path){
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        ClassLoader classLoader = getClass().getClassLoader();
-        String fileUrl=classLoader.getResource(".").getFile() +"images"+path+fileName;
-        logger.debug(fileUrl);
-        try (InputStream in = file.getInputStream()) {
-            OutputStream out = new FileOutputStream(fileUrl);
-            FileCopyUtils.copy(in,out);
-            logger.debug("file copy");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        logger.debug(fileName);
-    }
-    @CrossOrigin(origins = "*")
     @PostMapping("/uploadFile")
     public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
         FileImage dbFile = null;

@@ -1,14 +1,20 @@
-<form [formGroup]="formIngredient" class="form-group form-inline">
-  <label for="nom" class="m-2">
-    Nom ingrédient :
-    <input type="text" id="nom" formControlName="nom" class="form-control ml-2">
-  </label>
-  <label for="unite" class="m-2">
-    Unite :
-    <select [(ngModel)]="uniteSelect" class="form-control m-2" formControlName="unite">
-      <option *ngFor="let unite of unites | async" [value]="unite">{{unite.value}}</option>
-    </select>
-  </label>
+<form [formGroup]="formIngredient">
+      <div class="form-group">
+      <label for="nom" class="m-2">
+        Nom ingrédient : </label>
+        <input type="text" id="nom" formControlName="nom" class="form-control ml-2">
+    </div>
+  <div class="form-group">
+    <label for="unite" class="m-2">
+      Unite : </label>
+      <select [(ngModel)]="uniteSelect" class="form-control m-2" formControlName="unite">
+        <option *ngFor="let unite of unites | async" [value]="unite">{{unite.value}}</option>
+      </select>
+    </div>
+  <div class="custom-file">
+    <label for="image">Image : </label>
+    <input type="file" name="image" id="image"  (change)="uploadImage($event.target.files)" class="custom-file-label"/>
+  </div>
   <button type="submit" class="btn btn-outline-primary m-3" placement="top" ngbTooltip="Sauvegarder" (click)="submit()">
     <i class="far fa-save"></i></button>
   <button class="btn btn-outline-danger" placement="top" ngbTooltip="Fermé"><i class="far fa-window-close"></i></button>

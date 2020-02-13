@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Unite } from '../Model/Entity/unite';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
+import { debounceTime, delay, switchMap, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
-import { State } from '../Model/Interfaces/state';
-import { tap, debounceTime, switchMap, delay } from 'rxjs/operators';
 import { SortDirection } from '../Model/Directives/sort-table.directive';
+import { Unite } from '../Model/Entity/unite';
+import { State } from '../Model/Interfaces/state';
 
 
 
@@ -57,13 +57,15 @@ export class UniteService {
   constructor(private http: HttpClient) {
     this.url = environment.urldatabase + '/Unites';
     this.getAll();
+    this.searchUnite();
+  }
+
+  private searchUnite() {
     this._search$.pipe(
       tap(() => this._loading$.next(true)),
       debounceTime(200),
-      switchMap(() => this._search()),
-      delay(200),
-      tap(() => this._loading$.next(false))
-    ).subscribe(result => {
+       switchMap(() => this._search()),
+        delay(200), tap(() => this._loading$.next(false))).subscribe(result => {
       this._unites$.next(result.unites);
       this._total$.next(result.total);
     });
