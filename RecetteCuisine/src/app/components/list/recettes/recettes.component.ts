@@ -15,7 +15,7 @@ export class RecettesComponent implements OnInit {
 
   recettes$: Observable<Recette[]>;
   total$: Observable<number>;
-  url = environment.urldatabase + 'file/downloadFile/';
+  url = environment.urldatabasefileDownload;
 
   @ViewChildren(SortTableDirective) headers: QueryList<SortTableDirective>;
 

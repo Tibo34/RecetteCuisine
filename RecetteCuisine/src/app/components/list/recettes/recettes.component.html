@@ -26,7 +26,7 @@
       <td>
         <ngb-highlight [result]="recette.theme.nom" [term]="recettesService.searchTerm"></ngb-highlight>
       </td>
-    <td><img src="{{url+recette.imageId}}" alt="{{recette.image}}"></td>
+    <td><img src="{{url+recette.imageId}}" alt="{{recette.image}}" class="img-thumbnail"></td>
       <td><button class="btn btn-sm btn-outline-success mr-3 ml-3" (click)="addRecette(recette)"><i class="fas fa-plus"></i></button>
         <button class="btn btn-sm btn-outline-primary ml-3" (click)="recetteDetail(recette.id)"><i class="far fa-eye"></i></button></td>
     </tr>
