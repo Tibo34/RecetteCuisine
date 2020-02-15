@@ -38,14 +38,11 @@ export class FromRecetteComponent implements OnInit {
     const recette = new Recette();
     recette.nom = data.nom;
     recette.shortContent = data.content;
-    console.log(recette);
     this.fileService.saveFileImage(this.fileToUpload).subscribe((rep: UploadFileResponse) => {
-      console.log('file save');
-      console.log(rep);
       recette.imageId = rep.id;
-      recette.image=rep.fileName;
+      recette.image = rep.fileName;
       this.recetteService.save(recette).subscribe(rep => {
-        console.log(rep);
+        this.recetteService.getAll();
       });
     });
   }

@@ -4,6 +4,7 @@ import { TypeIngredient } from 'src/app/Model/Entity/type-ingredient';
 import { Observable } from 'rxjs';
 import { SortTableDirective, SortEvent } from 'src/app/Model/Directives/sort-table.directive';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-ingredients',
@@ -14,11 +15,12 @@ export class IngredientsComponent implements OnInit {
 
   ingredients$: Observable<TypeIngredient[]>;
   total$: Observable<number>;
+  url = environment.urldatabase + 'file/downloadFile/';
 
   @ViewChildren(SortTableDirective) headers: QueryList<SortTableDirective>;
 
 
-  constructor(public typeIngredientsService: TypeIngredientService,private router:Router) { }
+  constructor(public typeIngredientsService: TypeIngredientService, private router: Router) { }
 
   ngOnInit() {
     this.ingredients$ = this.typeIngredientsService.typeIngredients$;
@@ -38,11 +40,11 @@ export class IngredientsComponent implements OnInit {
     this.typeIngredientsService.sortDirection = direction;
   }
 
-  newIngredient(){
+  newIngredient() {
     this.router.navigate(['ingredients/new']);
   }
 
-  Detail(id:number){
+  Detail(id: number) {
     this.router.navigate(['ingedient/' + id]);
   }
 }

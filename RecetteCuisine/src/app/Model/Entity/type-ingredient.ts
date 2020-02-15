@@ -5,4 +5,5 @@ export class TypeIngredient {
   nom: string;
   unite: Unite;
   image: string;
+  imageId: number;
 }

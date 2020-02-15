@@ -176,3 +176,91 @@ DEBUG http-nio-9090-exec-8 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Control
 DEBUG http-nio-9090-exec-8 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
 DEBUG http-nio-9090-exec-2 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
 DEBUG http-nio-9090-exec-2 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-2 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-2 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-5 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-5 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-2 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-2 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-8 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-8 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-1 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-1 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-4 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-4 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-7 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-7 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-7 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-7 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-1 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-1 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-9 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-9 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-2 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-2 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-6 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-6 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-10 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-10 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-4 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-4 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-9 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-9 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-4 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-4 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-1 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-1 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-3 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-3 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-6 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-6 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-10 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-10 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-3 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-3 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-7 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-7 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-10 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-10 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-4 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-4 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-6 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-6 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-2 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-2 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-5 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-5 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-9 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-9 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-1 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-1 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-1 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-1 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-3 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-3 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-6 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-6 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-1 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-1 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-5 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-5 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-9 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-9 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-3 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-3 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-9 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-9 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-6 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-6 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-5 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-5 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-10 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-10 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [] 
+DEBUG http-nio-9090-exec-5 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-5 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Recette@fed59903] 
+DEBUG http-nio-9090-exec-2 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-2 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Recette@fed59903] 
+DEBUG http-nio-9090-exec-4 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-4 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Recette@fed59903] 
+DEBUG http-nio-9090-exec-8 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - Get all recettes! 
+DEBUG http-nio-9090-exec-8 com.ConfigPoste.RecetteCuisine.RecetteCuisine.Controller.RecetteController - [com.ConfigPoste.RecetteCuisine.RecetteCuisine.Model.Recette@fed59903] 

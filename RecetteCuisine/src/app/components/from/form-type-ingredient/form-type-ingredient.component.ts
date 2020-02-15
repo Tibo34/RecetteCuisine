@@ -5,6 +5,8 @@ import { TypeIngredient } from 'src/app/Model/Entity/type-ingredient';
 import { Unite } from 'src/app/Model/Entity/unite';
 import { UniteService } from 'src/app/services/unite.service';
 import { Observable } from 'rxjs';
+import { FileService } from 'src/app/services/file.service';
+import { UploadFileResponse } from 'src/app/Model/Entity/upload-file-response';
 
 @Component({
   selector: 'app-form-type-ingredient',
@@ -19,7 +21,12 @@ export class FormTypeIngredientComponent implements OnInit {
   unites: Observable<Unite[]>;
   fileToUpload: File = null;
 
-  constructor(private formBuilder: FormBuilder, private typeService: TypeIngredientService, private uniteService: UniteService) {
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private typeService: TypeIngredientService,
+    private uniteService: UniteService,
+    private fileService: FileService) {
   }
 
   ngOnInit() {
@@ -45,10 +52,14 @@ export class FormTypeIngredientComponent implements OnInit {
     const ingredient = new TypeIngredient();
     ingredient.nom = data;
     ingredient.unite = this.uniteSelect;
-    this.typeService.save(ingredient).subscribe(rep => {
-      console.log(rep);
-      this.typeService.getAll();
+    this.fileService.saveFileImage(this.fileToUpload).subscribe((rep: UploadFileResponse) => {
+      ingredient.imageId = rep.id;
+      ingredient.image = rep.fileName
+      this.typeService.save(ingredient).subscribe(rep => {
+        this.typeService.getAll();
+      });
     });
+
 
   }
 }

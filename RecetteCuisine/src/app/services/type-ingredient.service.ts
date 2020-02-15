@@ -39,7 +39,7 @@ function matches(typeIngredient: TypeIngredient, term: string) {
   providedIn: 'root'
 })
 export class TypeIngredientService {
-  private typeingredients: TypeIngredient[];
+  private typeingredients: TypeIngredient[] = [];
   private url: string;
   private _typeIngredients$ = new BehaviorSubject<TypeIngredient[]>([]);
   private _total$ = new BehaviorSubject<number>(0);
@@ -77,6 +77,8 @@ export class TypeIngredientService {
       this.typeingredients = ingredients;
       this._typeIngredients$.next(this.typeingredients);
       this._total$.next(ingredients.length);
+      this._loading$.next(false);
+      this._search$.next();
     });
   }
 

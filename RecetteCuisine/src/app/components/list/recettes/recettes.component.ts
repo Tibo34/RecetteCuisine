@@ -4,6 +4,7 @@ import { RecetteService } from 'src/app/services/recette.service';
 import { SortEvent, SortTableDirective } from 'src/app/Model/Directives/sort-table.directive';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-recettes',
@@ -14,6 +15,7 @@ export class RecettesComponent implements OnInit {
 
   recettes$: Observable<Recette[]>;
   total$: Observable<number>;
+  url = environment.urldatabase + 'file/downloadFile/';
 
   @ViewChildren(SortTableDirective) headers: QueryList<SortTableDirective>;
 

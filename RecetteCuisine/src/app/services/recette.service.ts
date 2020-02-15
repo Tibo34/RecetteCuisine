@@ -109,6 +109,7 @@ export class RecetteService {
       this.RECETTES = recettes;
       this._recettes$.next(this.RECETTES);
       this._total$.next(recettes.length);
+      this._search$.next();
     });
   }
 

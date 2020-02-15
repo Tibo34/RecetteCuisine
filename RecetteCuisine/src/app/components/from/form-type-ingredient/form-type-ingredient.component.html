@@ -1,4 +1,5 @@
 <form [formGroup]="formIngredient">
+  <div class="form-inline">
       <div class="form-group">
       <label for="nom" class="m-2">
         Nom ingrédient : </label>
@@ -8,9 +9,10 @@
     <label for="unite" class="m-2">
       Unite : </label>
       <select [(ngModel)]="uniteSelect" class="form-control m-2" formControlName="unite">
-        <option *ngFor="let unite of unites | async" [value]="unite">{{unite.value}}</option>
+        <option *ngFor="let unite of unites | async" [ngValue]="unite">{{unite.value}}</option>
       </select>
     </div>
+  </div>
   <div class="custom-file">
     <label for="image">Image : </label>
     <input type="file" name="image" id="image"  (change)="uploadImage($event.target.files)" class="custom-file-label"/>

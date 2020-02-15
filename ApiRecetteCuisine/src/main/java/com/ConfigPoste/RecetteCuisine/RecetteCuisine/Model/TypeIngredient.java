@@ -23,6 +23,8 @@ public class TypeIngredient {
     }
 
 
+    @Column(name="image_id")
+    private String imageId;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -86,5 +88,13 @@ public class TypeIngredient {
 
     public void setUnite(Unite uniteByUniteId) {
         this.unite = uniteByUniteId;
+    }
+
+    public String getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
     }
 }

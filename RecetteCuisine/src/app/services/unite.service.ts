@@ -39,7 +39,7 @@ function matches(unite: Unite, term: string, ) {
   providedIn: 'root'
 })
 export class UniteService {
-  private _unites: Unite[];
+  private _unites: Unite[] = [];
   private _unites$ = new BehaviorSubject<Unite[]>([]);
   private _total$ = new BehaviorSubject<number>(0);
   private _loading$ = new BehaviorSubject<boolean>(true);
@@ -64,11 +64,11 @@ export class UniteService {
     this._search$.pipe(
       tap(() => this._loading$.next(true)),
       debounceTime(200),
-       switchMap(() => this._search()),
-        delay(200), tap(() => this._loading$.next(false))).subscribe(result => {
-      this._unites$.next(result.unites);
-      this._total$.next(result.total);
-    });
+      switchMap(() => this._search()),
+      delay(200), tap(() => this._loading$.next(false))).subscribe(result => {
+        this._unites$.next(result.unites);
+        this._total$.next(result.total);
+      });
     this._search$.next();
   }
 
@@ -77,6 +77,7 @@ export class UniteService {
       this._unites = unites;
       this._unites$.next(unites);
       this._total$.next(unites.length);
+      this._search$.next();
     });
   }
 

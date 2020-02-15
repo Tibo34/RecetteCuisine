@@ -11,6 +11,7 @@
     <th scope="col">#</th>
     <th scope="col" sortable="nom" (sort)="onSort($event)">Nom</th>
     <th scope="col" sortable="unite" (sort)="onSort($event)">Unite</th>
+    <th></th>
     </thead>
     <tbody>
     <tr *ngFor="let ingredient of ingredients$ | async" (click)="Detail(ingredient.id)">
@@ -22,6 +23,7 @@
         <ngb-highlight [result]="ingredient.unite.value" [term]="typeIngredientsService.searchTerm"></ngb-highlight>
       </ng-container>
       </td>
+    <td><img src="{{url+ingredient.imageId}}" alt="{{ingredient.image}}"></td>
     </tr>
     </tbody>
   </table>
