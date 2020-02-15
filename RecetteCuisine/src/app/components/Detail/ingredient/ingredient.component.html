@@ -1,8 +1,10 @@
 <div class="container">
   <div class="row">
-  <div class="col"><img  class="img-fluid" [src]="imageToShow" alt="image" *ngIf="!isImageLoading; else noImageFound"></div>
+  <div class="col"><img  class="img-fluid" src="{{url}}" alt="image" *ngIf="!isImageLoading; else noImageFound"></div>
     <div class="col">{{ingredient.type.nom}}</div>
-    <div class="col">{{ (ingredient.quantite / this.personneMin) * this.personnes | number:'1.0-0'}} {{ingredient.type.unite.value}}</div>
+    <div class="col">{{ (ingredient.quantite / this.personneMin) * this.personnes | number:'1.0-0'}}
+      <ng-container *ngIf="ingredient.type.unite"> {{ingredient.type.unite.value}}</ng-container>
+     </div>
   </div>
 </div>
 <ng-template #noImageFound>

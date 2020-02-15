@@ -35,8 +35,7 @@ export class RecetteComponent implements OnInit {
   plus = false;
   addEtape = false;
   editTemp = false;
-  urlImageRecette = environment.urldatabase + "file/recettes/";
-  urlImageIngredient = environment.urldatabase + "file/ingredient/";
+  url = environment.urldatabasefileDownload;
 
   constructor(
     private recetteService: RecetteService,

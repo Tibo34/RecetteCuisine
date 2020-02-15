@@ -22,12 +22,14 @@ export class IngredientComponent implements OnInit {
   isImageLoading: boolean;
 
   imageToShow: any;
+  url = environment.urldatabasefileDownload;
 
   constructor(private fileService: FileService) { }
 
   ngOnInit() {
     this.quantite = (this.ingredient.quantite / this.personneMin) * this.personnes;
     this.urlImageIngredient = 'file/ingredient/' + this.ingredient.type.image;
+    this.url += this.ingredient.type.imageId;
   }
   createImageFromBlob(image: Blob) {
     const reader = new FileReader();

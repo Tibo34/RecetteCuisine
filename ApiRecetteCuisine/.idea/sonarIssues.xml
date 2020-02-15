@@ -188,6 +188,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/services/FilePDFResponse.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/services/FileStorageException.java">
           <value>
             <set />

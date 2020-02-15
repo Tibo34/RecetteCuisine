@@ -23,7 +23,7 @@
     <button class="btn btn-sm btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle><span class="badge badge-light m-1">{{nb | async}}</span><i class="fas fa-shopping-cart"></i></button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
         <ng-container *ngIf="notEmpty | async; else elseTemplate">
-        <div *ngFor="let recette of panier | async"><img src="assets/images/recettes/{{recette.image}}" alt="">{{recette.nom}}</div>
+        <div *ngFor="let recette of panier | async"><img src="{{url+recette.imageId}}" alt="">{{recette.nom}}</div>
         </ng-container>
         <ng-template #elseTemplate>
           <div>vide</div>

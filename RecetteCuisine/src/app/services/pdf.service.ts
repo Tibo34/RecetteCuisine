@@ -1,10 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Sanitizer, SecurityContext } from '@angular/core';
 import { PdfMakeWrapper, Img, Txt } from 'pdfmake-wrapper';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { RecetteService } from './recette.service';
 import { Observable } from 'rxjs';
 import { Recette } from '../Model/Entity/recette';
 import { IImg } from 'pdfmake-wrapper/lib/interfaces';
+import { environment } from 'src/environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FilePDF } from '../Model/Entity/file-pdf';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +20,47 @@ export class PdfService {
   recettes$: Observable<Recette[]>;
   recettes: Recette[] = [];
   promises: Promise<IImg>[] = [];
+  url = environment.urldatabase + 'file/pdf';
 
 
-  constructor(private recetteService: RecetteService) {
+  constructor(private recetteService: RecetteService, private http: HttpClient, private sanitazer: DomSanitizer) {
+
     this.recettes$ = this.recetteService.panierRecette;
     this.recetteService.panierRecette.subscribe((recettes: Recette[]) => {
       this.recettes = recettes;
-      console.log(this.recettes);
     });
+  }
+
+  public createPDFAPI() {
+    const recettesId = [];
+    this.recettes.forEach(r => {
+      recettesId.push(r.id);
+    });
+    const httpOptions = {
+      responseType: 'arraybuffer' as 'json'
+    };
+
+
+    this.http.post(this.url, recettesId, httpOptions).subscribe((rep) => {
+      this.downLoadFile(rep);
+    }, error => {
+      console.error(error);
+    });
+  }
+
+
+  /**
+   * Method is use to download file.
+   * @param data - Array Buffer data
+   * @param type - type of the document.
+   */
+  downLoadFile(data: any) {
+    const blob = new Blob([data], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+    const pwa = window.open(url);
+    if (!pwa || pwa.closed || typeof pwa.closed === 'undefined') {
+      alert('Please disable your Pop-up blocker and try again.');
+    }
   }
 
   async createPDF(str: string) {
@@ -53,7 +90,7 @@ export class PdfService {
       recette.ingredients.forEach(async ingredient => {
         const imgIngredient = new Img(imagesUrl + 'ingredients/' + ingredient.type.image).build();
         this.promises.push(imgIngredient);
-        this.pdf.add(await imgIngredient );
+        this.pdf.add(await imgIngredient);
         this.pdf.add(ingredient.type.nom + ' ' + ingredient.quantite + ' ' + ingredient.type.unite.value);
       });
       recette.etapes.forEach(etape => {
