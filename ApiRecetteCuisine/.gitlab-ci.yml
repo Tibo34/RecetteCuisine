@@ -1,0 +1,19 @@
+image: maven:latest
+
+stages:
+  - build
+  - packaging
+
+compile:
+  stage: build
+  artifacts:
+    paths:
+      - target/test.jar
+  script:
+    - mvn compile
+
+package:
+  stage: packaging
+  script:
+    - mvn package
+

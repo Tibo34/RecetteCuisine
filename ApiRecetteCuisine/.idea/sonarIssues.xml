@@ -23,27 +23,7 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/pom.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/AppConfig.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Controller/EtapeController.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Controller/FileController.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Controller/IngredientController.java">
           <value>
             <set />
           </value>
@@ -53,42 +33,7 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Controller/RecetteController.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Controller/ThemeController.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Controller/TypeIngredientController.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Controller/UniteController.java">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Logger/LoggerConfig.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Model/Etape.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Model/FileImage.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Model/Ingredient.java">
           <value>
             <set />
           </value>
@@ -98,32 +43,7 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Model/Recette.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Model/Theme.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Model/TypeIngredient.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Model/Unite.java">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/PDF/PDFGenerator.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/RecetteCuisineApplication.java">
           <value>
             <set />
           </value>
@@ -133,27 +53,7 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Repository/EtapeRepository.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Repository/FileImageRepository.java">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Repository/IngredientRecetteRepository.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Repository/IngredientRepository.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Repository/RecetteRepository.java">
           <value>
             <set />
           </value>
@@ -163,47 +63,7 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Repository/ThemeRepository.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Repository/TypeIngredientRepository.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/Repository/UniteRepository.java">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/WebSecurityConfig.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/services/DBFileStorageService.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/services/FilePDFResponse.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/services/FileStorageException.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/services/MyFileNotFoundException.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/java/com/ConfigPoste/RecetteCuisine/RecetteCuisine/services/UploadFileResponse.java">
           <value>
             <set />
           </value>
@@ -218,22 +78,7 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/src/main/resources/apiRecette.yaml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/resources/application.properties">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/main/resources/log4j.properties">
           <value>
             <set />
           </value>
