@@ -23,7 +23,7 @@
     "angular-sanitize": "^1.7.9",
     "bootstrap": "^4.4.1",
     "bootstrap-input-spinner": "^1.13.3",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "pdfmake": "^0.1.64",
     "pdfmake-wrapper": "^2.0.0",
     "rxjs": "~6.4.0",
